@@ -6,7 +6,7 @@ CREATE TABLE users (
 
 CREATE TABLE quotes (
     id SERIAL PRIMARY KEY,
-    author VARCHAR(50),
+    author VARCHAR(100),
     content VARCHAR(500),
     source VARCHAR(400),
     user_id INT REFERENCES users(id)

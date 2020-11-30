@@ -1,9 +1,15 @@
 import './App.css';
+import {withRouter} from 'react-router-dom'
+import Header from './Components/Header'
+import routes from './routes'
 
-function App() {
+function App(props) {
   return (
-    <div className="App">{routes}</div>
+    <div className="App">
+     <Header/>
+      {routes}
+      </div>
   );
 }
 
-export default App;
+export default withRouter(App);
