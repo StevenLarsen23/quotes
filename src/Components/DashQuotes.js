@@ -7,7 +7,7 @@ const DashQuotes = (props) => {
   const [sourceInput, sourceSetInput] = useState(source);
   const [edit, setEdit] = useState(false);
   return (
-    <li style={{border: '2px solid black', margin: '5px'}}>
+    <li style={{ border: "2px solid black", margin: "5px" }}>
       {edit ? (
         <label>
           Quote:
@@ -50,18 +50,17 @@ const DashQuotes = (props) => {
         <div>
           <button
             onClick={() => {
-                authorSetInput(author);
+              authorSetInput(author);
               contentSetInput(content);
               sourceSetInput(source);
               setEdit(!edit);
             }}
-            
           >
             Cancel
           </button>
           <button
             onClick={() => {
-              props.editQuote(id,  authorInput, contentInput,sourceInput);
+              props.editQuote(id, authorInput, contentInput, sourceInput);
               setEdit(!edit);
             }}
           >

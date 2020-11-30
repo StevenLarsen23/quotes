@@ -7,12 +7,12 @@ class Header extends Component {
     console.log(this.props)
     return (
       <div className='nav'>
-        <ul className='nav-list'>
+        <ul className='nav-list' style={{listStyle: 'none'}}>
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/new">+</Link>
+            <Link to="/form">Add Quote</Link>
           </li>
           <li>
             <Link to="/Auth">Login</Link>
