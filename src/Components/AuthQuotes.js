@@ -40,6 +40,7 @@ const AuthQuotes = (props) => {
       )}
       {edit ? (
         <label>
+            <br/>
           Source:
           <input
             value={sourceInput}
