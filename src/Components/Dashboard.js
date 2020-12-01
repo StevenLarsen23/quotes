@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DashQuotes from "./DashQuotes"
+import DashQuotes from "./DashQuotes";
+import AuthQuotes from "./AuthQuotes";
 import { connect } from "react-redux";
 
 const Dashboard = (props) => {
@@ -30,7 +31,7 @@ const Dashboard = (props) => {
       console.log(err);
     }
   };
-
+  // view only quotes
   const mappedQuotes = quotes.map((quote, i) => {
     return (
       <DashQuotes
@@ -40,12 +41,28 @@ const Dashboard = (props) => {
       />
     );
   });
+  // ability to edit and delete quotes
+  const authMappedQuotes = quotes.map((quote, i) => {
+    return (
+      <AuthQuotes
+        key={`${quote.id}-${i}`}
+        quote={quote}
+        editQuote={editQuote}
+      />
+    );
+  });
 
   return (
     <div>
-      <ul>
-        <li style={{ listStyle: "none" }}>{mappedQuotes}</li>
-      </ul>
+      {!props.isLoggedIn ? (
+        <ul>
+          <li style={{ listStyle: "none" }}>{mappedQuotes}</li>
+        </ul>
+      ) : (
+        <ul>
+          <li style={{ listStyle: "none" }}>{authMappedQuotes}</li>
+        </ul>
+      )}
     </div>
   );
 };

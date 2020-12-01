@@ -35,7 +35,8 @@ massive({
   // user endpoints
   app.post('/auth/register', userCtrl.register);
   app.post('/auth/login', userCtrl.login);
-  app.delete('/auth/logout', userCtrl.logout);
+  app.post('/auth/logout', userCtrl.logout);
+  app.get('/api/user', userCtrl.getUser)
 
   // quotes endpoints
   app.get('/api/quotes', qCtrl.allQuotes);
