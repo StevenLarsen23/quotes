@@ -5,32 +5,48 @@ import { logoutUser, getUser } from "../redux/reducer";
 import axios from "axios";
 
 class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      searchInput: "",
+      displayQuotes: [],
+    };
+  }
   componentDidMount() {
     this.props.getUser();
   }
+
+  handleInput = (e) => {
+    this.setState({ searchInput: e.target.value });
+    axios
+      .get(`/api/quote?search=${e.target.value}`)
+      .then((res) => {
+        this.setState({ displayQuotes: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+
   logout = () => {
     axios.post("/auth/logout");
     this.props.logoutUser();
   };
   render() {
-    console.log(this.props);
     return (
       <div className="nav">
+        <input placeholder={'Search'} value={this.state.searchInput} onChange={this.handleInput} />
         {!this.props.isLoggedIn ? (
           <ul className="nav-list" style={{ listStyle: "none" }}>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/Auth">Login</Link>
             </li>
             <li>
-              <Link to="/Auth">Login</Link>
+              <Link to="/Auth">Register</Link>
             </li>
           </ul>
         ) : (
           <div>
+            <p>{`Welcome ${this.props.user.first_name} ${this.props.user.last_name}!`}</p>
             <ul className="nav-list" style={{ listStyle: "none" }}>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
               <li>
                 <Link to="/form">Add Quote</Link>
               </li>

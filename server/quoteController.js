@@ -21,7 +21,7 @@ module.exports = {
     const { author } = req.body;
     const { content } = req.body;
     const { source } = req.body;
-    const { user_id } = req.session.user;
+    const { user_id } = req.session.user.id;
     try {
       const quotes = await db.quotes.add_quote([
         author,

@@ -31,6 +31,15 @@ const Dashboard = (props) => {
       console.log(err);
     }
   };
+
+  const deleteQuote = async (id) => {
+    try {
+      const res = await axios.delete(`/api/quotes/${id}`)
+      setQuotes(res.data)
+    } catch (err) {
+      console.log(err)
+    }
+  };
   // view only quotes
   const mappedQuotes = quotes.map((quote, i) => {
     return (
@@ -48,6 +57,7 @@ const Dashboard = (props) => {
         key={`${quote.id}-${i}`}
         quote={quote}
         editQuote={editQuote}
+        deleteQuote={deleteQuote}
       />
     );
   });

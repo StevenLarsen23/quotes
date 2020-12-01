@@ -69,9 +69,11 @@ class Auth extends Component {
                         placeholder="password" 
                         onChange={ e => this.changeHandler(e)}
                     />
-                    <button>Submit</button>
+                    <button>Register</button>
                 </form>
-                <button onClick={this.toggleNewUser}>Have an account?</button>
+                <label> Have an Account? Click here to{' '}
+                <button onClick={this.toggleNewUser}>Login</button>
+                </label>
             </div>
             :
             <div>
@@ -90,9 +92,11 @@ class Auth extends Component {
                         placeholder="password" 
                         onChange={ e => this.changeHandler(e)}
                     />
-                    <button>Submit</button>
+                    <button>Login</button>
                 </form>
-                <button onClick={this.toggleNewUser}>Need an account?</button>
+                <label>Need an Account? Click here to{' '}
+                <button onClick={this.toggleNewUser}>Register</button>
+                </label>
             </div>}
       </div>
     );

@@ -34,6 +34,7 @@ const AuthQuotes = (props) => {
         <h3>
           Author: {!author ? "Unknown" : author}
           <br />
+          <br />
           Source: {!source ? "Unknown" : source}
         </h3>
       )}
@@ -47,7 +48,7 @@ const AuthQuotes = (props) => {
           />
         </label>
       ) : (
-        <br/>
+        <br />
       )}
       {edit ? (
         <div>
@@ -79,10 +80,15 @@ const AuthQuotes = (props) => {
           Edit
         </button>
       )}
-      <button
-      onClick={() => {
-          props.deleteQuote(id)
-      }}>Delete</button>
+      {edit ? null : (
+        <button
+          onClick={() => {
+            props.deleteQuote(id);
+          }}
+        >
+          Delete
+        </button>
+      )}
     </li>
   );
 };

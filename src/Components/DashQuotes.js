@@ -1,13 +1,15 @@
 const DashQuotes = (props) => {
-  const { id, content, author, source } = props.quote;
+  const { content, author, source } = props.quote;
 
   return (
     <li style={{ border: "2px solid black", margin: "5px" }}>
       <h2>"{content}"</h2>
+      <br />
       <h3>
-        Author: {!author ? 'Unknown' : author}
+        Author: {!author ? "Unknown" : author}
         <br />
-        Source: {!source ? 'Unknown' : source}
+        <br />
+        Source: {!source ? "Unknown" : source}
       </h3>
     </li>
   );

@@ -10,7 +10,7 @@ const Form = (props) => {
   const [quote, setQuote] = useState({
     author: "",
     content: "",
-    source: "",
+    source: ""
   });
 
   const [contentInput, contentSetInput] = useState(quote.content);
@@ -28,6 +28,7 @@ const Form = (props) => {
           onChange={(e) => contentSetInput(e.target.value)}
         />
       </label>
+      <br/>
       <label>
         Author/Artist:{" "}
         <input
@@ -36,6 +37,7 @@ const Form = (props) => {
           onChange={(e) => authorSetInput(e.target.value)}
         />
       </label>
+      <br/>
       <label>
         Source:{" "}
         <input
@@ -44,6 +46,7 @@ const Form = (props) => {
           onChange={(e) => sourceSetInput(e.target.value)}
         />
       </label>
+      <br/>
       <button>Add</button>
       <button>Cancel</button>
     </form>

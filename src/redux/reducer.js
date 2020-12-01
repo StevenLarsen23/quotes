@@ -10,6 +10,7 @@ const ADD_QUOTE = "ADD_QUOTE";
 const LOGIN_USER = "LOGIN_USER";
 const LOGOUT_USER = "LOGOUT_USER";
 const GET_USER = "GET_USER";
+const SEARCH_QUOTES = 'SEARCH_QUOTES'
 
 export function addQuote() {
   const data = axios
@@ -21,6 +22,15 @@ export function addQuote() {
     payload: data,
   };
 }
+
+// export function searchQuotes() {
+//   const data = axios
+//   .get('/api/quotes')
+//   return {
+//     type: SEARCH_QUOTES,
+//     payload: data
+//   }
+// }
 
 export function loginUser(user) {
   return {
@@ -63,6 +73,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, user: payload, isLoggedIn: true };
     case GET_USER + "_REJECTED":
       return initialState;
+      case SEARCH_QUOTES:
+        return {...state, '': payload}
     default:
       return { state };
   }
