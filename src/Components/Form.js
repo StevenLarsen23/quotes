@@ -1,23 +1,26 @@
-import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { addQuote } from "../redux/reducer";
 
 const Form = (props) => {
-  useEffect(() => {
-    props.addQuote();
-  }, [{}]);
+
 
   const [quote, setQuote] = useState({
     author: "",
     content: "",
-    source: ""
+    source: "",
   });
+
+  addQuote = (e) => {
+    axios.post(`/api/quotes` )
+  }
 
   const [contentInput, contentSetInput] = useState(quote.content);
   const [authorInput, authorSetInput] = useState(quote.author);
   const [sourceInput, sourceSetInput] = useState(quote.source);
   return (
-    <form
+    <form 
       style={{ border: "2px solid black", padding: "20px" /*, width: '50vw'*/ }}
     >
       <label>
@@ -28,7 +31,7 @@ const Form = (props) => {
           onChange={(e) => contentSetInput(e.target.value)}
         />
       </label>
-      <br/>
+      <br />
       <label>
         Author/Artist:{" "}
         <input
@@ -37,7 +40,7 @@ const Form = (props) => {
           onChange={(e) => authorSetInput(e.target.value)}
         />
       </label>
-      <br/>
+      <br />
       <label>
         Source:{" "}
         <input
@@ -46,8 +49,8 @@ const Form = (props) => {
           onChange={(e) => sourceSetInput(e.target.value)}
         />
       </label>
-      <br/>
-      <button>Add</button>
+      <br />
+      <button onClick={(e) => this.addQuote(e)}>Add</button>
       <button>Cancel</button>
     </form>
   );

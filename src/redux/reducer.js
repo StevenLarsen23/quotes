@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initialState = {
-  quotes: {},
+  quotes: [],
   user: {},
   isLoggedIn: false,
 };
@@ -23,14 +23,12 @@ export function addQuote() {
   };
 }
 
-// export function searchQuotes() {
-//   const data = axios
-//   .get('/api/quotes')
-//   return {
-//     type: SEARCH_QUOTES,
-//     payload: data
-//   }
-// }
+export function searchQuotes(data) {
+    return {
+    type: SEARCH_QUOTES,
+    payload: data
+  }
+}
 
 export function loginUser(user) {
   return {
@@ -74,7 +72,7 @@ export default function reducer(state = initialState, action) {
     case GET_USER + "_REJECTED":
       return initialState;
       case SEARCH_QUOTES:
-        return {...state, '': payload}
+        return {...state, quotes: payload}
     default:
       return { state };
   }

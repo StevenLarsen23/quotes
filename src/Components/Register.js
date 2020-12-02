@@ -4,13 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { loginUser } from "../redux/reducer";
 
-class Auth extends Component {
+class Register extends Component {
   constructor() {
     super();
     this.state = {
       email: "",
       password: "",
-      newUser: false,
     };
   }
 
@@ -20,11 +19,11 @@ class Auth extends Component {
     });
   };
 
-  login = async (e) => {
+  register = async (e) => {
     e.preventDefault();
     const { email, password } = this.state;
     try {
-      const user = await axios.post("/auth/login", { email, password });
+      const user = await axios.post("/auth/register", { email, password });
       this.props.loginUser(user.data);
       this.props.history.push("/");
     } catch (err) {
@@ -37,9 +36,9 @@ class Auth extends Component {
     return (
       <div>
         <div>
-          <Link to="/">Home</Link>
-          <h3>Login</h3>
-          <form onSubmit={(e) => this.login(e)}>
+            <Link to='/'>Home</Link>
+          <h3>Register</h3>
+          <form onSubmit={(e) => this.register(e)}>
             <input
               name="email"
               value={email}
@@ -53,10 +52,11 @@ class Auth extends Component {
               placeholder="password"
               onChange={(e) => this.changeHandler(e)}
             />
-            <button>Login</button>
+            <button>Register</button>
           </form>
           <label>
-            Need an Account? Click here to <Link to="/register">Register</Link>
+            {" "}
+            Have an Account? Click here to <Link to="/auth">Login</Link>
           </label>
         </div>
       </div>
@@ -68,4 +68,4 @@ const mapStateToProps = (reduxState) => {
   return reduxState;
 };
 
-export default connect(mapStateToProps, { loginUser })(Auth);
+export default connect(mapStateToProps, { loginUser })(Register);

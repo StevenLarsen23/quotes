@@ -16,6 +16,18 @@ module.exports = {
     }
   },
 
+  searchQuotes: async (req, res) => {
+    const db = req.app.get('db');
+    const {search} = req.query;
+    console.log(search)
+    const [quotes] = await db.quotes.search_quotes(search);
+    if (quotes) {
+      res.status(200).send(quotes)
+    } else {
+      res.status(400).send('No quotes matching input')
+    }
+  },
+
   addQuote: async (req, res) => {
     const db = req.app.get("db");
     const { author } = req.body;
