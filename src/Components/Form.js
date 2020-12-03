@@ -1,27 +1,22 @@
-import axios from "axios";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { addQuote } from "../redux/reducer";
+import { Link, withRouter } from "react-router-dom";
 
 const Form = (props) => {
-
-
-  const [quote, setQuote] = useState({
+  const [quote] = useState({
     author: "",
     content: "",
     source: "",
   });
 
-  addQuote = (e) => {
-    axios.post(`/api/quotes` )
-  }
-
   const [contentInput, contentSetInput] = useState(quote.content);
   const [authorInput, authorSetInput] = useState(quote.author);
   const [sourceInput, sourceSetInput] = useState(quote.source);
   return (
-    <form 
+    <div
       style={{ border: "2px solid black", padding: "20px" /*, width: '50vw'*/ }}
+      onSubmit={(e) => e.preventDefault()}
     >
       <label>
         Quote:{" "}
@@ -50,9 +45,28 @@ const Form = (props) => {
         />
       </label>
       <br />
-      <button onClick={(e) => this.addQuote(e)}>Add</button>
-      <button>Cancel</button>
-    </form>
+      <button
+        onClick={(e) => {
+          props.addQuote(contentInput, authorInput, sourceInput);
+          sourceSetInput("");
+          contentSetInput("");
+          authorSetInput("");
+        }}
+      >
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          Add
+        </Link>
+      </button>
+      <button
+        onClick={(e) => {
+          sourceSetInput("");
+          contentSetInput("");
+          authorSetInput("");
+        }}
+      >
+        Cancel
+      </button>
+    </div>
   );
 };
 
@@ -60,4 +74,4 @@ const mapStateToProps = (reduxState) => {
   return reduxState;
 };
 
-export default connect(mapStateToProps, { addQuote })(Form);
+export default withRouter(connect(mapStateToProps, { addQuote })(Form));

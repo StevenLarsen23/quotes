@@ -9,6 +9,9 @@ export default (
         <Route exact path='/' component={Dashboard}/>
         <Route path='/auth' component={Auth}/>
         <Route path='/register' component={Register}/>
+        <layout>
         <Route path='/form' component={Form}/>
+        {/* <Route path='/' component={Dashboard}/> */}
+        </layout>
     </Switch>
 )

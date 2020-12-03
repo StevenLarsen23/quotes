@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import {withRouter} from 'react-router-dom'
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser, getUser, searchQuotes } from "../redux/reducer";
 import axios from "axios";
@@ -19,32 +18,27 @@ class Header extends Component {
 
   handleInput = (e) => {
     this.setState({ searchInput: e.target.value });
-    
   };
 
   search = () => {
     axios
       .get(`/api/search?search=${this.state.searchInput}`)
       .then((res) => {
-        this.props.searchQuotes(res.data)
-        this.setState({searchInput: ''})
+        this.props.searchQuotes(res.data);
+        this.setState({ searchInput: "" });
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   logout = () => {
     axios.post("/auth/logout");
     this.props.logoutUser();
   };
-  
+
   render() {
     return (
       <div className="nav">
-        <input
-          placeholder={"Search"}
-          value={this.state.searchInput}
-          onChange={this.handleInput}
-        />
+        <input value={this.state.searchInput} onChange={this.handleInput} />
         <button onClick={() => this.search()}>Search</button>
         {!this.props.isLoggedIn ? (
           <ul className="nav-list" style={{ listStyle: "none" }}>
@@ -57,7 +51,7 @@ class Header extends Component {
           </ul>
         ) : (
           <div>
-            <p>{`Welcome ${this.props.user.first_name} ${this.props.user.last_name}!`}</p>
+            <h2>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h2>
             <ul className="nav-list" style={{ listStyle: "none" }}>
               {this.props.location.pathname === "/" ? (
                 <li>
@@ -83,4 +77,6 @@ class Header extends Component {
 const mapStateToProps = (reduxState) => {
   return reduxState;
 };
-export default withRouter(connect(mapStateToProps, { logoutUser, getUser, searchQuotes })(Header));
+export default withRouter(
+  connect(mapStateToProps, { logoutUser, getUser, searchQuotes })(Header)
+);

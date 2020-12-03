@@ -10,11 +10,23 @@ const ADD_QUOTE = "ADD_QUOTE";
 const LOGIN_USER = "LOGIN_USER";
 const LOGOUT_USER = "LOGOUT_USER";
 const GET_USER = "GET_USER";
-const SEARCH_QUOTES = 'SEARCH_QUOTES'
+const SEARCH_QUOTES = "SEARCH_QUOTES";
+const GET_QUOTES = "GET_QUOTES";
 
-export function addQuote() {
+export function getQuotes() {
   const data = axios
-    .post("/api/quotes")
+    .get("/api/quotes")
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+  return {
+    type: GET_QUOTES,
+    payload: data,
+  };
+}
+
+export function addQuote(content, author, source) {
+  const data = axios
+    .post("/api/quotes", {author, content, source})
     .then((res) => res.data)
     .catch((err) => console.log(err));
   return {
@@ -24,10 +36,10 @@ export function addQuote() {
 }
 
 export function searchQuotes(data) {
-    return {
+  return {
     type: SEARCH_QUOTES,
-    payload: data
-  }
+    payload: data,
+  };
 }
 
 export function loginUser(user) {
@@ -55,6 +67,12 @@ export function getUser() {
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case GET_QUOTES + "_PENDING":
+      return { ...state };
+    case GET_QUOTES + "_REJECTED":
+      return { ...state };
+    case GET_QUOTES + "_FULFILLED":
+      return { ...state, quotes: payload };
     case ADD_QUOTE + "_PENDING":
       return { ...state };
     case ADD_QUOTE + "_REJECTED":
@@ -71,8 +89,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, user: payload, isLoggedIn: true };
     case GET_USER + "_REJECTED":
       return initialState;
-      case SEARCH_QUOTES:
-        return {...state, quotes: payload}
+    case SEARCH_QUOTES:
+      return { ...state, quotes: payload };
     default:
       return { state };
   }

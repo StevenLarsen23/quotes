@@ -2,22 +2,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import DashQuotes from "./DashQuotes";
 import AuthQuotes from "./AuthQuotes";
+import { getQuotes } from "../redux/reducer";
 import { connect } from "react-redux";
 
 const Dashboard = (props) => {
-  const [quotes, setQuotes] = useState([]);
+  const [setQuotes] = useState([]);
 
   useEffect(() => {
-    const getQuotes = async () => {
-      try {
-        const quotes = await axios.get("/api/quotes");
-        setQuotes(quotes.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getQuotes();
-  }, []);
+    props.getQuotes();
+  }, [props]);
 
   const editQuote = async (id, author, content, source) => {
     try {
@@ -34,33 +27,35 @@ const Dashboard = (props) => {
 
   const deleteQuote = async (id) => {
     try {
-      const res = await axios.delete(`/api/quotes/${id}`)
-      setQuotes(res.data)
+      const res = await axios.delete(`/api/quotes/${id}`);
+      setQuotes(res.data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
   // view only quotes
-  const mappedQuotes = quotes.map((quote, i) => {
-    return (
-      <DashQuotes
-        key={`${quote.id}-${i}`}
-        quote={quote}
-        editQuote={editQuote}
-      />
-    );
-  });
-  // ability to edit and delete quotes
-  const authMappedQuotes = quotes.map((quote, i) => {
-    return (
-      <AuthQuotes
-        key={`${quote.id}-${i}`}
-        quote={quote}
-        editQuote={editQuote}
-        deleteQuote={deleteQuote}
-      />
-    );
-  });
+  let mappedQuotes = [];
+  let authMappedQuotes = [];
+  let searchedQuotes = [];
+  if (props.quotes) {
+    mappedQuotes = props.quotes.map((quote, i) => {
+      return (
+        <DashQuotes 
+         key={`${quote.id}-${i}`} 
+         quote={quote} />);
+    });
+    // ability to edit and delete quotes
+    authMappedQuotes = props.quotes.map((quote, i) => {
+      return (
+        <AuthQuotes
+          key={`${quote.id}-${i}`}
+          quote={quote}
+          editQuote={editQuote}
+          deleteQuote={deleteQuote}
+        />
+      );
+    });
+  }
 
   return (
     <div>
@@ -76,5 +71,8 @@ const Dashboard = (props) => {
     </div>
   );
 };
+// const mapStateToProps = (reduxState) => {
+//   return reduxState;
+// }
 
-export default connect((reduxState) => reduxState)(Dashboard);
+export default connect((reduxState) => reduxState, { getQuotes })(Dashboard);
