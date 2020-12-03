@@ -7,17 +7,28 @@ import { connect } from "react-redux";
 
 const Dashboard = (props) => {
   const [setQuotes] = useState([]);
+  const [setFavorites] = useState([]);
 
   useEffect(() => {
     props.getQuotes();
   }, []);
 
-  const editQuote = async (id, author, content, source) => {
+  const addFavorite = async (id) => {
+    try {
+    const res = axios.post(`/api/favorites/${id}`, {id});
+    setFavorites(res.data);
+  } catch (err) {
+    console.log(err)
+  }
+  };
+
+  const editQuote = async (id, author, content, source, user_id) => {
     try {
       const res = await axios.put(`/api/quotes/${id}`, {
         author,
         content,
         source,
+        user_id,
       });
       setQuotes(res.data);
     } catch (err) {
@@ -33,9 +44,15 @@ const Dashboard = (props) => {
       console.log(err);
     }
   };
+
+  // const userId = props.user.id
+  // const user_id = props.quotes
+
   // view only quotes
   let mappedQuotes = [];
   let authMappedQuotes = [];
+  // console.log("session", userId)
+  // console.log("quote", user_id.user_id)
   if (props.quotes) {
     let data = Array.from(props.quotes)
     mappedQuotes = data.map((quote, i) => {
@@ -47,12 +64,15 @@ const Dashboard = (props) => {
     // ability to edit and delete quotes
     authMappedQuotes = data.map((quote, i) => {
       return (
+        <div>
+          <h1 addFavorite={addFavorite}>+</h1>
         <AuthQuotes
           key={`${quote.id}-${i}`}
           quote={quote}
           editQuote={editQuote}
           deleteQuote={deleteQuote}
         />
+        </div>
       );
     });
   }

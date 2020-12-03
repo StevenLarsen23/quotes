@@ -14,7 +14,7 @@ const Form = (props) => {
   const [contentInput, contentSetInput] = useState(quote.content);
   const [authorInput, authorSetInput] = useState(quote.author);
   const [sourceInput, sourceSetInput] = useState(quote.source);
-  const user_id = props.user.id
+  const userId = props.user.id
   return (
     <div
       style={{ border: "2px solid black", padding: "20px" /*, width: '50vw'*/ }}
@@ -49,7 +49,7 @@ const Form = (props) => {
       <br />
       <button
         onClick={(e) => {
-          props.addQuote(contentInput, authorInput, sourceInput, user_id);
+          props.addQuote(contentInput, authorInput, sourceInput, userId);
           sourceSetInput("");
           contentSetInput("");
           authorSetInput("");

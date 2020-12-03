@@ -6,7 +6,10 @@ const AuthQuotes = (props) => {
   const [authorInput, authorSetInput] = useState(author);
   const [sourceInput, sourceSetInput] = useState(source);
   const [edit, setEdit] = useState(false);
+
+  
   return (
+    <div>
     <li style={{ border: "2px solid black", margin: "5px" }}>
       {edit ? (
         <label>
@@ -38,7 +41,7 @@ const AuthQuotes = (props) => {
           Source: {!source ? "Unknown" : source}
         </h3>
       )}
-      {edit ? (
+      {/* {edit ? (
         <label>
             <br/>
           Source:
@@ -89,8 +92,9 @@ const AuthQuotes = (props) => {
         >
           Delete
         </button>
-      )}
+      )} */}
     </li>
+    </div>
   );
 };
 
