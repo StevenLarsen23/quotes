@@ -1,8 +1,15 @@
-test@gmail.com
-asdf1234
 
-1234@gmail.com
-1234
+"email": "1234@gmail.com",
+"password": "1234",
+"first_name": "Bob Lee",
+"last_name": "Swagger"
 
-4321@gmail.com
-test
+"email": "321@gmail.com",
+"password": "321",
+"first_name": "Nick",
+"last_name": "Miller"
+
+"email": "test@gmail.com",
+"password": "test",
+"first_name": "Death",
+"last_name": "Blade"

@@ -10,7 +10,7 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     props.getQuotes();
-  }, [props]);
+  }, []);
 
   const editQuote = async (id, author, content, source) => {
     try {
@@ -36,16 +36,16 @@ const Dashboard = (props) => {
   // view only quotes
   let mappedQuotes = [];
   let authMappedQuotes = [];
-  let searchedQuotes = [];
   if (props.quotes) {
-    mappedQuotes = props.quotes.map((quote, i) => {
+    let data = Array.from(props.quotes)
+    mappedQuotes = data.map((quote, i) => {
       return (
         <DashQuotes 
          key={`${quote.id}-${i}`} 
          quote={quote} />);
     });
     // ability to edit and delete quotes
-    authMappedQuotes = props.quotes.map((quote, i) => {
+    authMappedQuotes = data.map((quote, i) => {
       return (
         <AuthQuotes
           key={`${quote.id}-${i}`}

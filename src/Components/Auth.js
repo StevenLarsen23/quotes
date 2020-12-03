@@ -37,7 +37,7 @@ class Auth extends Component {
     return (
       <div>
         <div>
-          <Link to="/">Home</Link>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>Home</Link>
           <h3>Login</h3>
           <form onSubmit={(e) => this.login(e)}>
             <input
@@ -56,7 +56,7 @@ class Auth extends Component {
             <button>Login</button>
           </form>
           <label>
-            Need an Account? Click here to <Link to="/register">Register</Link>
+            Need an Account? Click here to <Link to="/register" style={{ textDecoration: "none", color: "black" }}>Register</Link>
           </label>
         </div>
       </div>

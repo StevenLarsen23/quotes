@@ -38,15 +38,25 @@ class Header extends Component {
   render() {
     return (
       <div className="nav">
-        <input value={this.state.searchInput} onChange={this.handleInput} />
-        <button onClick={() => this.search()}>Search</button>
+        {this.props.location.pathname === "/form" ? null : (
+          <div>
+            <input value={this.state.searchInput} onChange={this.handleInput} />
+            <button onClick={() => this.search()}>Search</button>
+          </div>
+        )}
+
         {!this.props.isLoggedIn ? (
           <ul className="nav-list" style={{ listStyle: "none" }}>
             <li>
-              <Link to="/auth">Login</Link>
+              <Link
+                to="/auth"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                Login
+              </Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/register" style={{ textDecoration: "none", color: "black" }}>Register</Link>
             </li>
           </ul>
         ) : (
@@ -55,16 +65,31 @@ class Header extends Component {
             <ul className="nav-list" style={{ listStyle: "none" }}>
               {this.props.location.pathname === "/" ? (
                 <li>
-                  <Link to="/form">Add Quote</Link>
+                  <Link
+                    to="/form"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    Add Quote
+                  </Link>
                 </li>
               ) : (
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link
+                    to="/"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    Home
+                  </Link>
                 </li>
               )}
 
               <li>
-                <Link onClick={this.logout}>Logout</Link>
+                <Link
+                  onClick={this.logout}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  Logout
+                </Link>
               </li>
             </ul>
           </div>

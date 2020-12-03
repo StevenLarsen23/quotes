@@ -36,7 +36,7 @@ class Register extends Component {
     return (
       <div>
         <div>
-            <Link to='/'>Home</Link>
+            <Link to='/' style={{ textDecoration: "none", color: "black" }}>Home</Link>
           <h3>Register</h3>
           <form onSubmit={(e) => this.register(e)}>
             <input
@@ -56,7 +56,7 @@ class Register extends Component {
           </form>
           <label>
             {" "}
-            Have an Account? Click here to <Link to="/auth">Login</Link>
+            Have an Account? Click here to <Link to="/auth" style={{ textDecoration: "none", color: "black" }}>Login</Link>
           </label>
         </div>
       </div>

@@ -19,8 +19,7 @@ module.exports = {
   searchQuotes: async (req, res) => {
     const db = req.app.get('db');
     const {search} = req.query;
-    console.log(search)
-    const [quotes] = await db.quotes.search_quotes(search);
+    const quotes = await db.quotes.search_quotes(search);
     if (quotes) {
       res.status(200).send(quotes)
     } else {
@@ -33,7 +32,7 @@ module.exports = {
     const { author } = req.body;
     const { content } = req.body;
     const { source } = req.body;
-    const { user_id } = req.session.user.id;
+    const user_id = req.session.user.id;
     try {
       const quotes = await db.quotes.add_quote([
         author,
