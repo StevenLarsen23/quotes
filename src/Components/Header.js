@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser, getUser, searchQuotes } from "../redux/reducer";
 import axios from "axios";
+import './Header.css';
 
 class Header extends Component {
   constructor() {
@@ -39,13 +40,18 @@ class Header extends Component {
     return (
       <div className="nav">
         {this.props.location.pathname === "/form" ? null : (
-          <div>
+          <div className='search'>
             <input value={this.state.searchInput} onChange={this.handleInput} />
             <button onClick={() => this.search()}>Search</button>
           </div>
         )}
+        <div className='user'>
+          {!this.props.isLoggedIn ? null : (<h1>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h1>)}
+            
+            </div>
 
         {!this.props.isLoggedIn ? (
+          <div>
           <ul className="nav-list" style={{ listStyle: "none" }}>
             <li>
               <Link
@@ -56,12 +62,17 @@ class Header extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/register" style={{ textDecoration: "none", color: "black" }}>Register</Link>
+              <Link
+                to="/register"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                Register
+              </Link>
             </li>
           </ul>
+          </div>
         ) : (
           <div>
-            <h2>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h2>
             <ul className="nav-list" style={{ listStyle: "none" }}>
               {this.props.location.pathname === "/" ? (
                 <li>
@@ -86,13 +97,14 @@ class Header extends Component {
               <li>
                 <Link
                   onClick={this.logout}
+                  to="/"
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   Logout
                 </Link>
               </li>
             </ul>
-          </div>
+            </div>
         )}
       </div>
     );

@@ -14,9 +14,8 @@ CREATE TABLE quotes (
     user_id INT REFERENCES users(id)
 );
 
-CREATE TABLE comments (
+CREATE TABLE favorites (
     id SERIAL PRIMARY KEY,
-    content VARCHAR(500),
     user_id INT REFERENCES users(id),
     quote_id INT REFERENCES quotes(id)
 );

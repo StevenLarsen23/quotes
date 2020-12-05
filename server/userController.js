@@ -22,6 +22,19 @@ module.exports = {
     }
   },
 
+  // editUser: async (req, res) => {
+  //   const db = req.app.get('db');
+  //   const {id} = req.params;
+  //   const {email, password, first_name, last_name} = req.body;
+
+  //   try {
+  //     const [foundUser] = await db.auth.find_email(email)
+  //     if (foundUser) {
+  //       res.status
+  //     }
+  //   }
+  // },
+
   login: async (req, res) => {
     const db = req.app.get("db");
     const { email, password } = req.body;

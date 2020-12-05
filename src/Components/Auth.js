@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { loginUser } from "../redux/reducer";
+import './Auth.css'
 
 class Auth extends Component {
   constructor() {
@@ -35,7 +36,7 @@ class Auth extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div>
+      <div className='auth'>
         <div>
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>Home</Link>
           <h3>Login</h3>

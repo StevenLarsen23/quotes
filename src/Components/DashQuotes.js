@@ -1,8 +1,13 @@
+import './Quotes.css'
+
 const DashQuotes = (props) => {
   const { content, author, source } = props.quote;
 
   return (
-    <li style={{ border: "2px solid black", margin: "5px" }}>
+    <li 
+    className="quote-box"
+    style={{ border: "2px solid black"}}
+    >
       <h2>"{content}"</h2>
       <br />
       <h3>

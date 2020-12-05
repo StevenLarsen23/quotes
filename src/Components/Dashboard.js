@@ -4,6 +4,7 @@ import DashQuotes from "./DashQuotes";
 import AuthQuotes from "./AuthQuotes";
 import { getQuotes } from "../redux/reducer";
 import { connect } from "react-redux";
+import './Dashboard.css'
 
 const Dashboard = (props) => {
   const [setQuotes] = useState([]);
@@ -45,14 +46,10 @@ const Dashboard = (props) => {
     }
   };
 
-  // const userId = props.user.id
-  // const user_id = props.quotes
 
   // view only quotes
   let mappedQuotes = [];
   let authMappedQuotes = [];
-  // console.log("session", userId)
-  // console.log("quote", user_id.user_id)
   if (props.quotes) {
     let data = Array.from(props.quotes)
     mappedQuotes = data.map((quote, i) => {
@@ -64,21 +61,19 @@ const Dashboard = (props) => {
     // ability to edit and delete quotes
     authMappedQuotes = data.map((quote, i) => {
       return (
-        <div>
-          <h1 addFavorite={addFavorite}>+</h1>
         <AuthQuotes
           key={`${quote.id}-${i}`}
           quote={quote}
           editQuote={editQuote}
           deleteQuote={deleteQuote}
         />
-        </div>
+       
       );
     });
   }
 
   return (
-    <div>
+    <div className='dash'>
       {!props.isLoggedIn ? (
         <ul>
           <li style={{ listStyle: "none" }}>{mappedQuotes}</li>

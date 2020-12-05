@@ -76,9 +76,9 @@ module.exports = {
   editFavorites: async (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    const { author } = req.body;
-    const { content } = req.body;
-    const { source } = req.body;
+    const { author, content, source } = req.body;
+    // const { content } = req.body;
+    // const { source } = req.body;
 
     try {
       const favorites = await db.quotes.edit_quote([+id, author, content, source]);
@@ -102,32 +102,32 @@ module.exports = {
     }
   },
 
-  // editQuote: async (req, res) => {
-  //   const db = req.app.get("db");
-  //   const { id } = req.params;
-  //   const { author } = req.body;
-  //   const { content } = req.body;
-  //   const { source } = req.body;
+  editQuote: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    const { author } = req.body;
+    const { content } = req.body;
+    const { source } = req.body;
 
-  //   try {
-  //     const quotes = await db.quotes.edit_quote([+id, author, content, source]);
-  //     res.status(200).send(quotes);
-  //   } catch (err) {
-  //     console.log("Error when editing quote", err);
-  //     res.sendStatus(500);
-  //   }
-  // },
+    try {
+      const quotes = await db.quotes.edit_quote([+id, author, content, source]);
+      res.status(200).send(quotes);
+    } catch (err) {
+      console.log("Error when editing quote", err);
+      res.sendStatus(500);
+    }
+  },
 
-  // deleteQuote: async (req, res) => {
-  //   const db = req.app.get("db");
-  //   const { id } = req.params;
+  deleteQuote: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
 
-  //   try {
-  //     const quotes = await db.quotes.delete_quote(+id);
-  //     res.status(200).send(quotes);
-  //   } catch (err) {
-  //     console.log(`Couldn't delete quote`, err);
-  //     res.sendStatus(500);
-  //   }
-  // },
+    try {
+      const quotes = await db.quotes.delete_quote(+id);
+      res.status(200).send(quotes);
+    } catch (err) {
+      console.log(`Couldn't delete quote`, err);
+      res.sendStatus(500);
+    }
+  },
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { addQuote } from "../redux/reducer";
 import { Link, withRouter } from "react-router-dom";
+import './Form.css'
 
 const Form = (props) => {
   const [quote] = useState({
@@ -15,32 +16,37 @@ const Form = (props) => {
   const [authorInput, authorSetInput] = useState(quote.author);
   const [sourceInput, sourceSetInput] = useState(quote.source);
   const userId = props.user.id
+  
   return (
     <div
+    className='form'
       style={{ border: "2px solid black", padding: "20px" /*, width: '50vw'*/ }}
       onSubmit={(e) => e.preventDefault()}
     >
-      <label>
+      <label className='input-label'>
         Quote:{" "}
         <input
+        className='input-box'
           value={contentInput}
           type="text"
           onChange={(e) => contentSetInput(e.target.value)}
         />
       </label>
       <br />
-      <label>
-        Author/Artist:{" "}
+      <label className='input-label'>
+        Author:{" "}
         <input
+        className='input-box'
           value={authorInput}
           type="text"
           onChange={(e) => authorSetInput(e.target.value)}
         />
       </label>
       <br />
-      <label>
+      <label className='input-label'>
         Source:{" "}
         <input
+        className='input-box'
           value={sourceInput}
           type="text"
           onChange={(e) => sourceSetInput(e.target.value)}

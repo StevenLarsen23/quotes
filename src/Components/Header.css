@@ -1,0 +1,24 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.search {
+    width: 300px;
+    margin-top: 10px;
+}
+
+.user {
+    width: 300px;
+    margin-top: 10px;
+    font-size: xx-large;
+}
+
+.nav-list {
+    width: 300px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
