@@ -1,36 +1,38 @@
 .form {
-    height: 100vh;
-    /* border: 2px solid black; */
-    padding: 20px;
+  height: 100vh;
+  /* border: 2px solid black; */
+  padding: 20px;
 }
 
 .input-box {
-    height: 50px;
-    width: 1000px;
-    margin: 20px;
-    font-size: x-large;
+  height: 50px;
+  width: 1000px;
+  margin: 20px;
+  font-size: x-large;
 }
 
 .input-label {
-    color: white;
+  color: white;
 }
 
-@media screen and (max-width: 850px){
-    .form {
-        height: 90vh;
-        padding-top: 200px;
-        
-    }
+.form-btn {
+  border: none;
+  background-color: #319797;
+  padding: 5px;
+  width: 5vw;
+  margin: 5px;
+}
 
+@media screen and (max-width: 850px) {
+  .form {
+    height: 90vh;
+    padding-top: 200px;
+  }
 
-    .input-box{
-     width: 80%;
-     height: 25px;
-     margin-left: 10px;
-     margin-right: 10px;
-
-    }
- 
- }
-
- 
+  .input-box {
+    width: 80%;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

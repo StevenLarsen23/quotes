@@ -1,6 +1,7 @@
 .quote-box {
    backdrop-filter: blur(8px);
     color: beige;
+    text-shadow: 1px 1px black;
     height: 350px;
     width: 40vw;
     font-size: large;
@@ -15,6 +16,7 @@
     font-size: x-large;
     width: 100%;
     margin-top: 10px;
+    
 }
 
 .quote-info {

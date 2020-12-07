@@ -58,6 +58,7 @@ class Header extends Component {
               <button className="search-button" onClick={() => this.search()}>
                 Search
               </button>
+              <button className='search-button' onClick={this.refresh}>Clear</button>
             </div>
             <div className="user">
               {!this.props.isLoggedIn ? null : (

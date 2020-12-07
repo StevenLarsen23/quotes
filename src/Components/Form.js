@@ -53,6 +53,7 @@ const Form = (props) => {
       </label>
       <br />
       <button
+      className='form-btn'
         onClick={(e) => {
           props.addQuote(contentInput, authorInput, sourceInput, userId);
           sourceSetInput("");
@@ -64,7 +65,7 @@ const Form = (props) => {
           Add
         </Link>
       </button>
-      <button>
+      <button className='form-btn'>
         <Link to='/' style={{textDecoration: "none", color: "black" }}>
         Cancel
         </Link>

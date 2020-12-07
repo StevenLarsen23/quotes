@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import DashQuotes from "./DashQuotes";
 import AuthQuotes from "./AuthQuotes";
 import { getQuotes, setQuotes } from "../redux/reducer";
 import { connect } from "react-redux";
-import './Dashboard.css'
+import "./Dashboard.css";
 
 const Dashboard = (props) => {
-
   useEffect(() => {
     props.getQuotes();
   }, []);
@@ -15,7 +14,7 @@ const Dashboard = (props) => {
   // const addFavorite = async (id) => {
   //   try {
   //   const res = axios.post(`/api/favorites/${id}`, {id});
-  //   setFavorites(res.data);
+  //   props.setFavorites(res.data);
   // } catch (err) {
   //   console.log(err)
   // }
@@ -29,7 +28,6 @@ const Dashboard = (props) => {
         source,
         user_id,
       });
-      console.log(res.data)
       props.setQuotes(res.data);
     } catch (err) {
       console.log(err);
@@ -39,23 +37,19 @@ const Dashboard = (props) => {
   const deleteQuote = async (id) => {
     try {
       const res = await axios.delete(`/api/quotes/${id}`);
-      setQuotes(res.data);
+      props.setQuotes(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-
   // view only quotes
   let mappedQuotes = [];
   let authMappedQuotes = [];
   if (props.quotes) {
-    let data = Array.from(props.quotes)
+    let data = Array.from(props.quotes);
     mappedQuotes = data.map((quote, i) => {
-      return (
-        <DashQuotes 
-         key={`${quote.id}-${i}`} 
-         quote={quote} />);
+      return <DashQuotes key={`${quote.id}-${i}`} quote={quote} />;
     });
     // ability to edit and delete quotes
     authMappedQuotes = data.map((quote, i) => {
@@ -66,13 +60,12 @@ const Dashboard = (props) => {
           editQuote={editQuote}
           deleteQuote={deleteQuote}
         />
-       
       );
     });
   }
 
   return (
-    <div className='dash'>
+    <div className="dash">
       {!props.isLoggedIn ? (
         <ul>
           <li style={{ listStyle: "none" }}>{mappedQuotes}</li>
@@ -85,8 +78,7 @@ const Dashboard = (props) => {
     </div>
   );
 };
-// const mapStateToProps = (reduxState) => {
-//   return reduxState;
-// }
 
-export default connect((reduxState) => reduxState, { getQuotes, setQuotes })(Dashboard);
+export default connect((reduxState) => reduxState, { getQuotes, setQuotes })(
+  Dashboard
+);
