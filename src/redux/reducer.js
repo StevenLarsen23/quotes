@@ -12,6 +12,7 @@ const LOGOUT_USER = "LOGOUT_USER";
 const GET_USER = "GET_USER";
 const SEARCH_QUOTES = "SEARCH_QUOTES";
 const GET_QUOTES = "GET_QUOTES";
+const SET_QUOTES = 'SET_QUOTES';
 
 export function getQuotes() {
   const data = axios
@@ -24,9 +25,16 @@ export function getQuotes() {
   };
 }
 
+export function setQuotes(quotes) {
+  return {
+    type: SET_QUOTES,
+    payload: quotes,
+  };
+}
+
 export function addQuote(content, author, source) {
   const data = axios
-    .post("/api/quotes", {author, content, source})
+    .post("/api/quotes", { author, content, source })
     .then((res) => res.data)
     .catch((err) => console.log(err));
   return {
@@ -78,6 +86,8 @@ export default function reducer(state = initialState, action) {
     case ADD_QUOTE + "_REJECTED":
       return { ...state };
     case ADD_QUOTE + "_FULFILLED":
+      return { ...state, quotes: payload };
+    case SET_QUOTES:
       return { ...state, quotes: payload };
     case LOGIN_USER:
       return { ...state, user: payload, isLoggedIn: true };

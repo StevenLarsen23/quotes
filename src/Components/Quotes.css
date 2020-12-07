@@ -33,7 +33,7 @@
 }
 
 .func-button {
-    background-color: aqua;
+    background-color: #329897;
     border: none;
     /* display: flex; */
     /* flex-direction: column; */
@@ -46,7 +46,7 @@
 }
 
 .edit-buttons {
-    background-color: aqua;
+    background-color: #329897;
     border: none;
     border-radius: 15%;
     height: 35px;
@@ -55,3 +55,13 @@
     bottom: 0px;
     right: 50%;
 }
+
+@media screen and (max-width: 800px){
+    .quote-box{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin-left: 2.5%;
+    }
+ 
+ }

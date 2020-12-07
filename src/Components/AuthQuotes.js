@@ -47,7 +47,7 @@ const AuthQuotes = (props) => {
                 className="edit-buttons"
                 onClick={() => {
                   props.editQuote(id, authorInput, contentInput, sourceInput);
-                  setEdit(!edit);
+                  setEdit(!edit); 
                 }}
               >
                 Save

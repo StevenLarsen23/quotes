@@ -20,7 +20,6 @@ const Form = (props) => {
   return (
     <div
     className='form'
-      style={{ border: "2px solid black", padding: "20px" /*, width: '50vw'*/ }}
       onSubmit={(e) => e.preventDefault()}
     >
       <label className='input-label'>
@@ -65,14 +64,10 @@ const Form = (props) => {
           Add
         </Link>
       </button>
-      <button
-        onClick={(e) => {
-          sourceSetInput("");
-          contentSetInput("");
-          authorSetInput("");
-        }}
-      >
+      <button>
+        <Link to='/' style={{textDecoration: "none", color: "black" }}>
         Cancel
+        </Link>
       </button>
     </div>
   );

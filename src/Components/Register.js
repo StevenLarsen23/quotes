@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { loginUser } from "../redux/reducer";
+import './Auth.css'
 
 class Register extends Component {
   constructor() {
@@ -34,30 +35,40 @@ class Register extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div>
+      <div className='auth'>
         <div>
-            <Link to='/' style={{ textDecoration: "none", color: "black" }}>Home</Link>
-          <h3>Register</h3>
+            <Link 
+            to='/' 
+            style={{ textDecoration: "none", color: "black" }} className='home-btn'
+            >
+              Home
+              </Link>
+          <h3 className='name'>Register</h3>
           <form onSubmit={(e) => this.register(e)}>
+            <div>
             <input
+            className='input'
               name="email"
               value={email}
               placeholder="Email"
               onChange={(e) => this.changeHandler(e)}
             />
+            </div>
+            <div>
             <input
+            className='input'
               name="password"
               type="password"
               value={password}
               placeholder="password"
               onChange={(e) => this.changeHandler(e)}
             />
-            <button>Register</button>
+            </div>
+            <button className='btn'>Register</button>
           </form>
-          <label>
-            {" "}
-            Have an Account? Click here to <Link to="/auth" style={{ textDecoration: "none", color: "black" }}>Login</Link>
-          </label>
+          <div className='redirect'>
+            Have an Account? Click here to <Link to="/auth" style={{color: "black" }}>Login</Link>
+          </div>
         </div>
       </div>
     );

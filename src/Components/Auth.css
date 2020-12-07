@@ -1,4 +1,53 @@
 .auth {
-    height: 100vw;
+  height: 100%;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 37vh;
+}
 
+.home-btn {
+  right: 0;
+  margin: 10px;
+  position: fixed;
+  font-size: x-large;
+}
+
+.name {
+  margin-top: 20%;
+  margin-bottom: 20px;
+  font-size: x-large;
+  /* color: white; */
+}
+
+.input {
+  margin: 20px;
+  height: 25px;
+  width: 25vw;
+}
+
+.btn {
+  border: none;
+  background-color: #319797;
+  padding: 5px;
+  width: 5vw;
+}
+
+.redirect {
+  margin: 20px;
+  /* color: white; */
+}
+
+@media screen and (max-width: 850px) {
+  .auth {
+    padding-bottom: 90%;
+  }
+
+  .input {
+    width: 50vw;
+  }
+
+  .btn {
+    width: 20vw;
+  }
 }

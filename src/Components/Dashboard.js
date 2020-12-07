@@ -2,26 +2,24 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import DashQuotes from "./DashQuotes";
 import AuthQuotes from "./AuthQuotes";
-import { getQuotes } from "../redux/reducer";
+import { getQuotes, setQuotes } from "../redux/reducer";
 import { connect } from "react-redux";
 import './Dashboard.css'
 
 const Dashboard = (props) => {
-  const [setQuotes] = useState([]);
-  const [setFavorites] = useState([]);
 
   useEffect(() => {
     props.getQuotes();
   }, []);
 
-  const addFavorite = async (id) => {
-    try {
-    const res = axios.post(`/api/favorites/${id}`, {id});
-    setFavorites(res.data);
-  } catch (err) {
-    console.log(err)
-  }
-  };
+  // const addFavorite = async (id) => {
+  //   try {
+  //   const res = axios.post(`/api/favorites/${id}`, {id});
+  //   setFavorites(res.data);
+  // } catch (err) {
+  //   console.log(err)
+  // }
+  // };
 
   const editQuote = async (id, author, content, source, user_id) => {
     try {
@@ -31,7 +29,8 @@ const Dashboard = (props) => {
         source,
         user_id,
       });
-      setQuotes(res.data);
+      console.log(res.data)
+      props.setQuotes(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -90,4 +89,4 @@ const Dashboard = (props) => {
 //   return reduxState;
 // }
 
-export default connect((reduxState) => reduxState, { getQuotes })(Dashboard);
+export default connect((reduxState) => reduxState, { getQuotes, setQuotes })(Dashboard);

@@ -1,21 +1,18 @@
-import './Quotes.css'
+import "./Quotes.css";
 
 const DashQuotes = (props) => {
   const { content, author, source } = props.quote;
 
   return (
-    <li 
-    className="quote-box"
-    style={{ border: "2px solid black"}}
-    >
-      <h2>"{content}"</h2>
-      <br />
-      <h3>
-        Author: {!author ? "Unknown" : author}
+    <li className="quote-box" style={{ border: "2px solid black" }}>
+      <div>
+        <h2 className="quote">"{content}"</h2>
         <br />
         <br />
-        Source: {!source ? "Unknown" : source}
-      </h3>
+        <br />
+        <h3 className="quote-info">Author: {!author ? "Unknown" : author}</h3>
+        <h3 className="quote-info">Source: {!source ? "Unknown" : source}</h3>
+      </div>
     </li>
   );
 };

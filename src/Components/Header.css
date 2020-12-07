@@ -10,6 +10,19 @@
     margin-top: 10px;
 }
 
+.search-input {
+    border: none;
+    margin-right: 5px;
+    height: 25px;
+}
+
+.search-button {
+    border: none;
+    height: 25px;
+    background-color: #336178;
+    color: #BEBEC0;
+}
+
 .user {
     width: 300px;
     margin-top: 10px;
@@ -21,4 +34,34 @@
     margin-top: 10px;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
+
+
+
+@media screen and (max-width: 850px){
+    .nav{
+        flex-direction: column-reverse;
+        position: fixed;
+        backdrop-filter: blur(5px);
+        height: 10vh;
+        top: 0;
+        z-index: 2;
+    }
+    
+    .search {
+        width: 100vw;
+        margin-bottom: 15px;
+        /* position: sticky; */
+    }
+
+    .user {
+        display: none;
+    }
+
+    .nav-list {
+        width: 100vw;
+        /* position: sticky; */
+        /* margin-top: -35px; */
+    }
+ }
