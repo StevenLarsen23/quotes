@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import DashQuotes from "./DashQuotes";
 import AuthQuotes from "./AuthQuotes";
-import { getQuotes, setQuotes } from "../redux/reducer";
+import { getQuotes, setQuotes, addFavorites } from "../redux/reducer";
 import { connect } from "react-redux";
 import "./Dashboard.css";
 
@@ -11,14 +11,6 @@ const Dashboard = (props) => {
     props.getQuotes();
   }, []);
 
-  // const addFavorite = async (id) => {
-  //   try {
-  //   const res = axios.post(`/api/favorites/${id}`, {id});
-  //   props.setFavorites(res.data);
-  // } catch (err) {
-  //   console.log(err)
-  // }
-  // };
 
   const editQuote = async (id, author, content, source, user_id) => {
     try {
@@ -59,6 +51,7 @@ const Dashboard = (props) => {
           quote={quote}
           editQuote={editQuote}
           deleteQuote={deleteQuote}
+          addFavorites={addFavorites}
         />
       );
     });
@@ -79,6 +72,6 @@ const Dashboard = (props) => {
   );
 };
 
-export default connect((reduxState) => reduxState, { getQuotes, setQuotes })(
+export default connect((reduxState) => reduxState, { getQuotes, setQuotes, addFavorites })(
   Dashboard
 );

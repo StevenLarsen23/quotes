@@ -2,6 +2,7 @@ import axios from "axios";
 
 const initialState = {
   quotes: [],
+  favoriteQuotes: [],
   user: {},
   isLoggedIn: false,
 };
@@ -12,7 +13,10 @@ const LOGOUT_USER = "LOGOUT_USER";
 const GET_USER = "GET_USER";
 const SEARCH_QUOTES = "SEARCH_QUOTES";
 const GET_QUOTES = "GET_QUOTES";
-const SET_QUOTES = 'SET_QUOTES';
+const SET_QUOTES = "SET_QUOTES";
+const GET_FAVORITES = "GET_FAVORITES";
+const ADD_FAVORITES = "ADD_FAVORITES";
+const SEARCH_FAVORITES = "SEARCH_FAVORITES";
 
 export function getQuotes() {
   const data = axios
@@ -21,6 +25,17 @@ export function getQuotes() {
     .catch((err) => console.log(err));
   return {
     type: GET_QUOTES,
+    payload: data,
+  };
+}
+
+export function getFavorites() {
+  const data = axios
+    .get("/api/favorites")
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+  return {
+    type: GET_FAVORITES,
     payload: data,
   };
 }
@@ -43,9 +58,27 @@ export function addQuote(content, author, source) {
   };
 }
 
+export function addFavorites(quote_id, user_id) {
+  const data = axios
+    .post("/api/favorites", { quote_id, user_id })
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+  return {
+    type: ADD_FAVORITES,
+    payload: data,
+  };
+}
+
 export function searchQuotes(data) {
   return {
     type: SEARCH_QUOTES,
+    payload: data,
+  };
+}
+
+export function searchFavorites(data) {
+  return {
+    type: SEARCH_FAVORITES,
     payload: data,
   };
 }
@@ -81,11 +114,23 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case GET_QUOTES + "_FULFILLED":
       return { ...state, quotes: payload };
+    case GET_FAVORITES + "_PENDING":
+      return { ...state };
+    case GET_FAVORITES + "_REJECTED":
+      return { ...state };
+    case GET_FAVORITES + "_FULFILLED":
+      return { ...state, favoriteQuotes: payload };
     case ADD_QUOTE + "_PENDING":
       return { ...state };
     case ADD_QUOTE + "_REJECTED":
       return { ...state };
     case ADD_QUOTE + "_FULFILLED":
+      return { ...state, quotes: payload };
+    case ADD_FAVORITES + "_PENDING":
+      return { ...state };
+    case ADD_FAVORITES + "_REJECTED":
+      return { ...state };
+    case ADD_FAVORITES + "_FULFILLED":
       return { ...state, quotes: payload };
     case SET_QUOTES:
       return { ...state, quotes: payload };
@@ -100,6 +145,8 @@ export default function reducer(state = initialState, action) {
     case GET_USER + "_REJECTED":
       return initialState;
     case SEARCH_QUOTES:
+      return { ...state, quotes: payload };
+    case SEARCH_FAVORITES:
       return { ...state, quotes: payload };
     default:
       return { state };

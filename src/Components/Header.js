@@ -33,15 +33,13 @@ class Header extends Component {
 
   refresh = () => {
     window.location.reload();
-  }
+  };
 
   logout = () => {
-    axios.post("/auth/logout")
-    .then(() => {
+    axios.post("/auth/logout").then(() => {
       this.props.logoutUser();
-      window.location.reload(false)
+      window.location.reload(false);
     });
-    
   };
 
   render() {
@@ -58,11 +56,15 @@ class Header extends Component {
               <button className="search-button" onClick={() => this.search()}>
                 Search
               </button>
-              <button className='search-button' onClick={this.refresh}>Clear</button>
+              <button className="search-button" onClick={this.refresh}>
+                Clear
+              </button>
             </div>
             <div className="user">
               {!this.props.isLoggedIn ? null : (
-                <h1>{`${this.props.user.first_name} ${this.props.user.last_name}`}</h1>
+                <h1>
+                  {`${this.props.user.first_name} ${this.props.user.last_name}`}
+                </h1>
               )}
             </div>
 
@@ -90,22 +92,42 @@ class Header extends Component {
             ) : (
               <div>
                 <ul className="nav-list" style={{ listStyle: "none" }}>
-                  {this.props.location.pathname === "/" ? (
-                    <li>
-                      <Link
-                        to="/form"
-                        style={{ textDecoration: "none", color: "black" }}
-                      >
-                        Add Quote
-                      </Link>
-                    </li>
-                  ) : (
+                  {this.props.location.pathname === "/favorites" ? 
+                  (
                     <li>
                       <Link
                         to="/"
                         style={{ textDecoration: "none", color: "black" }}
                       >
                         Home
+                      </Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link
+                        to="/favorites"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        Favorites
+                      </Link>
+                    </li>
+                  )}
+                  {!this.props.location.pathname === "/" ? (
+                    <li>
+                      <Link
+                        to="/"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        Home
+                      </Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link
+                        to="/form"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        Add Quote
                       </Link>
                     </li>
                   )}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import { addFavorites } from "../redux/reducer";
 import "./Quotes.css";
 
 const AuthQuotes = (props) => {
@@ -47,7 +48,7 @@ const AuthQuotes = (props) => {
                 className="edit-buttons"
                 onClick={() => {
                   props.editQuote(id, authorInput, contentInput, sourceInput);
-                  setEdit(!edit); 
+                  setEdit(!edit);
                 }}
               >
                 Save
@@ -72,7 +73,6 @@ const AuthQuotes = (props) => {
               <h2 className="quote">"{content}"</h2>
               <br />
               <br />
-              <br />
               <h3 className="quote-info">
                 Author: {!author ? "Unknown" : author}
               </h3>
@@ -81,6 +81,12 @@ const AuthQuotes = (props) => {
               </h3>
             </div>
             <div>
+              <br />
+              <br />
+              <button 
+              className="func-button"
+              onClick={() => props.addFavorites(id, userId)}
+              >+ Favorites</button>
               <button
                 className="func-button"
                 onClick={() => {
@@ -106,13 +112,18 @@ const AuthQuotes = (props) => {
           <h2 className="quote">"{content}"</h2>
           <br />
           <br />
-          <br />
           <h3 className="quote-info">Author: {!author ? "Unknown" : author}</h3>
           <h3 className="quote-info">Source: {!source ? "Unknown" : source}</h3>
+          <br />
+          <br />
+          <button 
+          className="func-button"
+          onClick={() => props.addFavorites(id, userId)}
+          >+ Favorites</button>
         </div>
       )}
     </li>
   );
 };
 
-export default connect((reduxState) => reduxState)(AuthQuotes);
+export default connect((reduxState) => reduxState, {addFavorites})(AuthQuotes);
