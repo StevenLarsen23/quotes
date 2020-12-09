@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import FavQuotes from "./FavQuotes";
 import { getFavorites } from "../redux/reducer";
@@ -6,10 +6,16 @@ import { connect } from "react-redux";
 import "./Dashboard.css";
 
 const Favorites = (props) => {
-  useEffect(() => {
-    props.getFavorites();
-}, []);
+  const [favoriteQuotes, setFavoriteQuotes] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get("/api/favorites")
+      .then((res) => setFavoriteQuotes(res.data))
+      .catch((err) => console.log(err));
+
+    props.getFavorites(favoriteQuotes);
+  }, []);
 
   const editQuote = async (id, author, content, source, user_id) => {
     try {
@@ -34,19 +40,20 @@ const Favorites = (props) => {
     }
   };
 
+  // console.log(props)
   let favMappedQuotes = [];
-  if (props.quotes) {
-      let data = (props.favoriteQuotes);
-      favMappedQuotes = data.map((quote, i) => {
-        console.log(props.favoriteQuotes[i].user_id)
-        console.log(props.user.id)
-      return (
+  if (favoriteQuotes.length) {
+    favMappedQuotes = favoriteQuotes.map((quote, i) => {
+      return favoriteQuotes[i].user_id === +props.match.params.userId ? (
         <FavQuotes
           key={`${quote.id}-${i}`}
+          userId={+props.match.params.userId}
           quote={quote}
           editQuote={editQuote}
           deleteQuote={deleteQuote}
         />
+      ) : (
+        null
       );
     });
   }

@@ -25,8 +25,9 @@
 
 @media screen and (max-width: 850px) {
   .form {
-    height: 90vh;
+    height: 73vh;
     padding-top: 200px;
+    overflow: hidden;
   }
 
   .input-box {
@@ -34,5 +35,9 @@
     height: 25px;
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  .form-btn {
+    width: 25vw;
   }
 }

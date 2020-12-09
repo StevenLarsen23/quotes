@@ -1,69 +1,91 @@
 .quote-box {
-   backdrop-filter: blur(8px);
-    color: beige;
-    text-shadow: 1px 1px black;
-    height: 400px;
-    width: 40vw;
-    font-size: large;
-    justify-content: center;
-    display: inline-flex;
-    flex-direction: row;
-    font-family: Optima, sans-serif;
-    margin: 5px;
-    padding: 10px;
+  backdrop-filter: blur(8px);
+  color: beige;
+  text-shadow: 1px 1px black;
+  height: 400px;
+  width: 40vw;
+  font-size: large;
+  justify-content: center;
+  display: inline-flex;
+  flex-direction: row;
+  font-family: Optima, sans-serif;
+  margin: 5px;
+  padding: 10px;
 }
+
+.fav-quote-box {
+  backdrop-filter: blur(8px);
+  color: beige;
+  text-shadow: 1px 1px black;
+  height: 400px;
+  width: 40vw;
+  font-size: large;
+  justify-content: center;
+  display: inline-flex;
+  flex-direction: row;
+  font-family: Optima, sans-serif;
+  margin: 5px;
+  padding: 10px;
+}
+
 .quote {
-    font-size: x-large;
-    width: 100%;
-    margin-top: 10px;
-    
+  font-size: x-large;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .quote-info {
-    height: 50px;
+  height: 50px;
 }
 
 .quote-box > button {
-    
-
 }
 
 .edit-input {
-    width: 80%;
-    height: 50px;
-    margin: 10px;
+  width: 80%;
+  height: 50px;
+  margin: 10px;
 }
 
 .func-button {
-    background-color: #329897;
-    border: none;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* border-radius: 20%; */
-    height: 40px;
-    width: 80px;
-    margin: 15px;
-    bottom: 0;
-    right: 50%;
+  background-color: #329897;
+  border: none;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* border-radius: 20%; */
+  height: 40px;
+  width: 80px;
+  margin: 15px;
+  bottom: 0;
+  right: 50%;
 }
 
 .edit-buttons {
-    background-color: #329897;
-    border: none;
-    border-radius: 15%;
-    height: 35px;
-    width: 55px;
-    margin: 15px;
-    bottom: 0px;
-    right: 50%;
+  background-color: #329897;
+  border: none;
+  border-radius: 15%;
+  height: 35px;
+  width: 55px;
+  margin: 15px;
+  bottom: 0px;
+  right: 50%;
 }
 
-@media screen and (max-width: 800px){
-    .quote-box{
+@media screen and (max-width: 800px) {
+  .quote-box {
+    /* color: #336178; */
+    /* text-shadow: 0.5px 0.5px black; */
     display: flex;
     align-items: center;
     width: 90%;
     margin-left: 2.5%;
-    }
- 
- }
+  }
+
+  .quote {
+    font-size: large;
+  }
+
+  .quote-info {
+    font-size: large;
+  }
+}

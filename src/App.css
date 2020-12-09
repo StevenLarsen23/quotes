@@ -1,15 +1,20 @@
+
+
 .App {
   text-align: center;
-  background-image: url('https://leffcommunications.com/wp-content/uploads/2017/03/2.-no-nonsense-guide-quotation-marks-519650504_1920x1080-colorlayer.jpg');
-  background-size: fill;
-  background-repeat: no-repeat;
+  background-image: url(./background.jpg);
+  background-size: contain;
+  background-repeat: repeat;
   background-attachment: fixed;
 
 }
 
 @media screen and (max-width: 850px){
    .App{
-   background-size: cover;
+     background-image: url(./mobile-background.jpg);
+   background-size: contain;
+   background-repeat: repeat;
+   background-attachment: fixed;
    }
 
 }

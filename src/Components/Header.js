@@ -6,8 +6,8 @@ import axios from "axios";
 import "./Header.css";
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       searchInput: "",
       displayQuotes: [],
@@ -31,10 +31,6 @@ class Header extends Component {
       .catch((err) => console.log(err));
   };
 
-  refresh = () => {
-    window.location.reload();
-  };
-
   logout = () => {
     axios.post("/auth/logout").then(() => {
       this.props.logoutUser();
@@ -43,6 +39,7 @@ class Header extends Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div>
         {this.props.location.pathname === "/form" ? null : (
@@ -91,9 +88,10 @@ class Header extends Component {
               </div>
             ) : (
               <div>
+                {console.log(this.props.user)}
                 <ul className="nav-list" style={{ listStyle: "none" }}>
-                  {this.props.location.pathname === "/favorites" ? 
-                  (
+                  {this.props.location.pathname ===
+                  `/favorites/${this.props.user.id}` ? (
                     <li>
                       <Link
                         to="/"
@@ -105,8 +103,9 @@ class Header extends Component {
                   ) : (
                     <li>
                       <Link
-                        to="/favorites"
+                        to={`/favorites/${this.props.user.id}`}
                         style={{ textDecoration: "none", color: "black" }}
+                        // onClick={() => window.location.reload(false)}
                       >
                         Favorites
                       </Link>

@@ -1,29 +1,43 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { connect } from "react-redux";
-import {getFavorites} from '../redux/reducer'
-import "./Quotes.css";
+import { getFavorites, deleteFavorites } from "../redux/reducer";
+import "./FavQuotes.css";
 
 const FavQuotes = (props) => {
-  const {content, author, source, user_id } = props.quote;
-  const userId = props.user.id;
+  const { id, content, author, source, user_id } = props.quote;
 
- 
+  const userId = props.userId;
 
-  return (
-    <li className="quote-box" style={{ border: "2px solid black" }}>
-      {userId !== user_id ? null : (
+  return userId !== user_id ? null : (
+    <li className="fav-quote-box" style={{ border: "2px solid black" }}>
+      <div>
         <div>
-          <h2 className="quote">"{content}"</h2>
+          <h2 className="fav-quote">"{content}"</h2>
           <br />
           <br />
           <br />
-          <h3 className="quote-info">Author: {!author ? "Unknown" : author}</h3>
-          <h3 className="quote-info">Source: {!source ? "Unknown" : source}</h3>
-          <button className="func-button">- Favorites</button>
+          <h3 className="fav-quote-info">
+            Author: {!author ? "Unknown" : author}
+          </h3>
+          <h3 className="fav-quote-info">
+            Source: {!source ? "Unknown" : source}
+          </h3>
+          <button
+            className="func-button"
+            onClick={() => {
+              props.deleteFavorites(id);
+              window.location.reload(false);
+            }}
+          >
+            - Favorites
+          </button>
         </div>
-       )} 
+      </div>
     </li>
   );
 };
 
-export default connect((reduxState) => reduxState, {getFavorites})(FavQuotes);
+export default connect((reduxState) => reduxState, {
+  getFavorites,
+  deleteFavorites,
+})(FavQuotes);

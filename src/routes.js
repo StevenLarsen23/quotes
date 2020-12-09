@@ -11,6 +11,6 @@ export default (
         <Route path='/auth' component={Auth}/>
         <Route path='/register' component={Register}/>
         <Route path='/form' component={Form}/>
-        <Route path='/favorites' component={Favorites}/>
+        <Route path='/favorites/:userId' component={Favorites}/>
     </Switch>
 )

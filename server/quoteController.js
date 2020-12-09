@@ -56,6 +56,19 @@ module.exports = {
   
   },
 
+  deleteFavorite: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+
+    try {
+      const favorites = await db.favorites.delete_favorites(+id);
+      res.status(200).send(favorites);
+    } catch (err) {
+      console.log(`Couldn't delete quote`, err);
+      res.sendStatus(500);
+    }
+  },
+
   myQuotes: (req, res) => {
     const db = req.app.get("db");
     db.favorites.get_favorites()
@@ -94,18 +107,7 @@ module.exports = {
     }
   },
 
-  deleteFavorite: async (req, res) => {
-    const db = req.app.get("db");
-    const { id } = req.params;
-
-    try {
-      const favorites = await db.quotes.delete_quote(+id);
-      res.status(200).send(favorites);
-    } catch (err) {
-      console.log(`Couldn't delete quote`, err);
-      res.sendStatus(500);
-    }
-  },
+  
 
   editQuote: async (req, res) => {
     const db = req.app.get("db");

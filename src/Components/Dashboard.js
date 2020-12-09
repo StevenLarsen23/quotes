@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import DashQuotes from "./DashQuotes";
 import AuthQuotes from "./AuthQuotes";
@@ -7,8 +7,15 @@ import { connect } from "react-redux";
 import "./Dashboard.css";
 
 const Dashboard = (props) => {
+  const [allQuotes, setAllQuotes] = useState([])
+
   useEffect(() => {
-    props.getQuotes();
+    axios
+    .get("/api/quotes")
+    .then((res) => setAllQuotes(res.data))
+    .catch((err) => console.log(err));
+
+    props.getQuotes(allQuotes);
   }, []);
 
 
@@ -39,7 +46,7 @@ const Dashboard = (props) => {
   let mappedQuotes = [];
   let authMappedQuotes = [];
   if (props.quotes) {
-    let data = Array.from(props.quotes);
+    let data = allQuotes;
     mappedQuotes = data.map((quote, i) => {
       return <DashQuotes key={`${quote.id}-${i}`} quote={quote} />;
     });

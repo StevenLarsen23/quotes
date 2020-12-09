@@ -13,6 +13,7 @@ const AuthQuotes = (props) => {
 
   return (
     <li className="quote-box" style={{ border: "2px solid black" }}>
+      
       {userId === user_id ? (
         edit ? (
           <div>
