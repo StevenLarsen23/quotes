@@ -53,9 +53,7 @@ app.delete("/api/quotes/:id", qCtrl.deleteQuote);
 
 // user's quotes endpoints
 app.get("/api/favorites", qCtrl.myQuotes);
-app.get("/api/searchfav", qCtrl.searchFavorites);
 app.post("/api/favorites", qCtrl.addFavorites);
-app.put("/api/favotires/:id", qCtrl.editFavorites);
 app.delete("/api/favorites/:id", qCtrl.deleteFavorite);
 
 app.get('*', (req, res) => {

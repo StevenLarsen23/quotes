@@ -75,40 +75,6 @@ module.exports = {
     .then(quotes => res.status(200).send(quotes))
   },
 
-  searchFavorites: async (req, res) => {
-    const db = req.app.get("db");
-    const { search } = req.query;
-    const quotes = await db.quotes.search_quotes(search);
-    if (quotes) {
-      res.status(200).send(quotes);
-    } else {
-      res.status(400).send("No quotes matching input");
-    }
-  },
-
-  editFavorites: async (req, res) => {
-    const db = req.app.get("db");
-    const { id } = req.params;
-    const { author, content, source } = req.body;
-    // const { content } = req.body;
-    // const { source } = req.body;
-
-    try {
-      const favorites = await db.quotes.edit_quote([
-        +id,
-        author,
-        content,
-        source,
-      ]);
-      res.status(200).send(favorites);
-    } catch (err) {
-      console.log("Error when editing quote", err);
-      res.sendStatus(500);
-    }
-  },
-
-  
-
   editQuote: async (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
