@@ -28,6 +28,7 @@ const Dashboard = (props) => {
         user_id,
       });
       props.setQuotes(res.data);
+      window.location.reload(false)
     } catch (err) {
       console.log(err);
     }
