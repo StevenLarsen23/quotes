@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { logoutUser, getUser, searchQuotes } from "../redux/reducer";
+import { logoutUser, getUser, setQuotes } from "../redux/reducer";
 import axios from "axios";
 import "./Header.css";
 
@@ -25,12 +25,12 @@ class Header extends Component {
     axios
       .get(`/api/search?search=${this.state.searchInput}`)
       .then((res) => {
-        this.props.searchQuotes(res.data);
+        this.props.setQuotes(res.data);
         this.setState({ searchInput: "" });
+        
       })
       .catch((err) => console.log(err));
   };
-
   logout = () => {
     axios.post("/auth/logout").then(() => {
       this.props.logoutUser();
@@ -38,25 +38,34 @@ class Header extends Component {
     });
   };
 
+  refresh = () => {
+    window.location.reload(false)
+  }
+
   render() {
-    console.log(this.props)
     return (
       <div>
         {this.props.location.pathname === "/form" ? null : (
           <div className="nav">
-            <div className="search">
-              <input
-                className="search-input"
-                value={this.state.searchInput}
-                onChange={this.handleInput}
-              />
-              <button className="search-button" onClick={() => this.search()}>
-                Search
-              </button>
-              <button className="search-button" onClick={this.refresh}>
-                Clear
-              </button>
-            </div>
+            {this.props.location.pathname ===
+            `/favorites/${this.props.user.id}` ? (
+              <div className="search"></div>
+            ) : (
+              <div className="search">
+                <input
+                  className="search-input"
+                  value={this.state.searchInput}
+                  onChange={this.handleInput}
+                />
+                <button className="search-button" onClick={() => this.search()}>
+                  Search
+                </button>
+                <button className="search-button" onClick={this.refresh}>
+                  Clear
+                </button>
+              </div>
+            )}
+
             <div className="user">
               {!this.props.isLoggedIn ? null : (
                 <h1>
@@ -71,7 +80,7 @@ class Header extends Component {
                   <li>
                     <Link
                       to="/auth"
-                      style={{ textDecoration: "none", color: "black" }}
+                      style={{ textDecoration: "none", color: "white" }}
                     >
                       Login
                     </Link>
@@ -79,7 +88,7 @@ class Header extends Component {
                   <li>
                     <Link
                       to="/register"
-                      style={{ textDecoration: "none", color: "black" }}
+                      style={{ textDecoration: "none", color: "white" }}
                     >
                       Register
                     </Link>
@@ -88,14 +97,13 @@ class Header extends Component {
               </div>
             ) : (
               <div>
-                {console.log(this.props.user)}
                 <ul className="nav-list" style={{ listStyle: "none" }}>
                   {this.props.location.pathname ===
                   `/favorites/${this.props.user.id}` ? (
                     <li>
                       <Link
                         to="/"
-                        style={{ textDecoration: "none", color: "black" }}
+                        style={{ textDecoration: "none", color: "white" }}
                       >
                         Home
                       </Link>
@@ -104,8 +112,7 @@ class Header extends Component {
                     <li>
                       <Link
                         to={`/favorites/${this.props.user.id}`}
-                        style={{ textDecoration: "none", color: "black" }}
-                        // onClick={() => window.location.reload(false)}
+                        style={{ textDecoration: "none", color: "white" }}
                       >
                         Favorites
                       </Link>
@@ -115,7 +122,7 @@ class Header extends Component {
                     <li>
                       <Link
                         to="/"
-                        style={{ textDecoration: "none", color: "black" }}
+                        style={{ textDecoration: "none", color: "white" }}
                       >
                         Home
                       </Link>
@@ -124,7 +131,7 @@ class Header extends Component {
                     <li>
                       <Link
                         to="/form"
-                        style={{ textDecoration: "none", color: "black" }}
+                        style={{ textDecoration: "none", color: "white" }}
                       >
                         Add Quote
                       </Link>
@@ -135,7 +142,7 @@ class Header extends Component {
                     <Link
                       to="/"
                       onClick={this.logout}
-                      style={{ textDecoration: "none", color: "black" }}
+                      style={{ textDecoration: "none", color: "white" }}
                     >
                       Logout
                     </Link>
@@ -154,5 +161,5 @@ const mapStateToProps = (reduxState) => {
   return reduxState;
 };
 export default withRouter(
-  connect(mapStateToProps, { logoutUser, getUser, searchQuotes })(Header)
+  connect(mapStateToProps, { logoutUser, getUser, setQuotes })(Header)
 );

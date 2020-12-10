@@ -47,7 +47,7 @@ const Dashboard = (props) => {
   let mappedQuotes = [];
   let authMappedQuotes = [];
   if (props.quotes) {
-    let data = allQuotes;
+    let data = props.quotes;
     mappedQuotes = data.map((quote, i) => {
       return <DashQuotes key={`${quote.id}-${i}`} quote={quote} />;
     });

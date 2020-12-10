@@ -19,8 +19,8 @@
 .search-button {
     border: none;
     height: 25px;
-    background-color: #336178;
-    color: #BEBEC0;
+    background-color: #3CBD9F;
+    color: white;
     margin: 2px;
 }
 
@@ -28,6 +28,7 @@
     width: 300px;
     margin-top: 10px;
     font-size: xx-large;
+    text-shadow: 2px 2px white;
 }
 
 .nav-list {

@@ -34,13 +34,17 @@ module.exports = {
     const { author, content, source } = req.body;
     const user_id = req.session.user.id;
     try {
-      const quotes = await db.quotes.add_quote([
+      const quote = await db.quotes.add_quote_get_quote([
         author,
         content,
         source,
         user_id,
       ]);
-      res.status(200).send(quotes);
+    
+      const quote_id = quote[0].id
+
+      db.favorites.add_favorite(user_id, quote_id)
+    .then(() => {res.sendStatus(200)})
     } catch (err) {
       console.log("error adding quote", err);
       res.sendStatus(500);
@@ -55,6 +59,29 @@ module.exports = {
     .then((quotes) => {res.status(200).send(quotes)})
   
   },
+
+  // addQuote: async (req, res) => {
+  //   const db = req.app.get("db");
+  //   const { author, content, source } = req.body;
+  //   const user_id = req.session.user.id;
+  //   try {
+  //     const quotes = await db.quotes.add_quote([
+  //       author,
+  //       content,
+  //       source,
+  //       user_id,
+  //     ]);
+
+      
+
+  //     res.status(200).send(quotes);
+  //   } catch (err) {
+  //     console.log("error adding quote", err);
+  //     res.sendStatus(500);
+  //   }
+  // },
+
+  
 
   deleteFavorite: async (req, res) => {
     const db = req.app.get("db");

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { addQuote } from "../redux/reducer";
+import { addQuote, addFavorites } from "../redux/reducer";
 import { Link, withRouter } from "react-router-dom";
 import './Form.css'
 
@@ -16,6 +16,7 @@ const Form = (props) => {
   const [authorInput, authorSetInput] = useState(quote.author);
   const [sourceInput, sourceSetInput] = useState(quote.source);
   const userId = props.user.id
+  
   
   return (
     <div

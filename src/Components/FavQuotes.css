@@ -1,8 +1,8 @@
  
  .fav-quote-box {
      backdrop-filter: blur(8px);
-      color: beige;
-      text-shadow: 1px 1px black;
+      color: white;
+      text-shadow: 2px 2px black;
       height: 400px;
       width: 40vw;
       font-size: large;
@@ -37,30 +37,6 @@
      width: 80%;
      height: 50px;
      margin: 10px;
- }
- 
- .func-button {
-     background-color: #329897;
-     border: none;
-     /* display: flex; */
-     /* flex-direction: column; */
-     /* border-radius: 20%; */
-     height: 40px;
-     width: 80px;
-     margin: 15px;
-     bottom: 0;
-     right: 50%;
- }
- 
- .edit-buttons {
-     background-color: #329897;
-     border: none;
-     border-radius: 15%;
-     height: 35px;
-     width: 55px;
-     margin: 15px;
-     bottom: 0px;
-     right: 50%;
  }
  
  @media screen and (max-width: 800px){

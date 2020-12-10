@@ -3,8 +3,8 @@
 .App {
   text-align: center;
   background-image: url(./background.jpg);
-  background-size: contain;
-  background-repeat: repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 
 }
@@ -12,8 +12,8 @@
 @media screen and (max-width: 850px){
    .App{
      background-image: url(./mobile-background.jpg);
-   background-size: contain;
-   background-repeat: repeat;
+   background-size: cover;
+   background-repeat: no-repeat;
    background-attachment: fixed;
    }
 
