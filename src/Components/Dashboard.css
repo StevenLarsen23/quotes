@@ -1,7 +1,7 @@
 .dash {
     height: auto;
     display: flex;
-    margin-top: 10vh;
+    margin-top: 15vh;
     flex-direction: column;
     flex-wrap: wrap;
     z-index: 3;
