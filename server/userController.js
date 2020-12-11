@@ -12,8 +12,7 @@ module.exports = {
       } else {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-        const newUser = await db.auth.register_user([email, hash, first_name, last_name]);
-
+        const [newUser] = await db.auth.register_user([email, hash, first_name, last_name]);
         req.session.user = newUser;
         res.status(200).send(req.session.user);
       }

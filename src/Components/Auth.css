@@ -7,17 +7,18 @@
 }
 
 .home-btn {
-  right: 0;
-  margin: 10px;
+  right: 70px;
+  margin-top: 20px;
   position: fixed;
   font-size: x-large;
+  color: white;
 }
 
 .name {
   margin-top: 20%;
   margin-bottom: 20px;
   font-size: x-large;
-  /* color: white; */
+  color: white;
 }
 
 .input {
@@ -31,11 +32,13 @@
   background-color: #319797;
   padding: 5px;
   width: 5vw;
+  color: white;
 }
 
 .redirect {
   margin: 20px;
-  /* color: white; */
+  color: white;
+  text-shadow: 1px 1px black;
 }
 
 @media screen and (max-width: 850px) {

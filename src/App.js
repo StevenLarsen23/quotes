@@ -6,9 +6,11 @@ import routes from './routes'
 
 function App(props) {
   return (
+    <div className='full-app'>
     <div className="App">
      {props.location.pathname === '/auth' || props.location.pathname === '/register' ? null : <Header/>}
       {routes}
+      </div>
       </div>
   );
 }

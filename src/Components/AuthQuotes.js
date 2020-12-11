@@ -13,7 +13,6 @@ const AuthQuotes = (props) => {
 
   return (
     <li className="quote-box" style={{ border: "2px solid black" }}>
-      
       {userId === user_id ? (
         edit ? (
           <div>
@@ -84,10 +83,6 @@ const AuthQuotes = (props) => {
             <div>
               <br />
               <br />
-              <button 
-              className="func-button"
-              onClick={() => props.addFavorites(id, userId)}
-              >+ Favorites</button>
               <button
                 className="func-button"
                 onClick={() => {
@@ -98,12 +93,17 @@ const AuthQuotes = (props) => {
               </button>
               <button
                 className="func-button"
-                style={{ backgroundColor: "red" }}
                 onClick={() => {
                   props.deleteQuote(id);
                 }}
               >
                 Delete
+              </button>
+              <button
+                className="func-button"
+                onClick={() => props.addFavorites(id, userId)}
+              >
+                + Favorites
               </button>
             </div>
           </div>
@@ -117,14 +117,18 @@ const AuthQuotes = (props) => {
           <h3 className="quote-info">Source: {!source ? "Unknown" : source}</h3>
           <br />
           <br />
-          <button 
-          className="func-button"
-          onClick={() => props.addFavorites(id, userId)}
-          >+ Favorites</button>
+          <button
+            className="func-button"
+            onClick={() => props.addFavorites(id, userId)}
+          >
+            + Favorites
+          </button>
         </div>
       )}
     </li>
   );
 };
 
-export default connect((reduxState) => reduxState, {addFavorites})(AuthQuotes);
+export default connect((reduxState) => reduxState, { addFavorites })(
+  AuthQuotes
+);

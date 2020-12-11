@@ -40,7 +40,7 @@ class Auth extends Component {
         <div>
           <Link
             to="/"
-            style={{ textDecoration: "none", color: "black" }}
+            style={{ textDecoration: "none"}}
             className="home-btn"
           >
             Home
@@ -70,7 +70,7 @@ class Auth extends Component {
           </form>
           <div className="redirect">
             Need an Account? Click here to{" "}
-            <Link to="/register" style={{ color: "black" }}>
+            <Link to="/register" style={{ color: "white" }}>
               Register
             </Link>
           </div>

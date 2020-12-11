@@ -17,5 +17,5 @@ CREATE TABLE quotes (
 CREATE TABLE favorites (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id),
-    quote_id INT REFERENCES quotes(id)
+    quote_id INT REFERENCES quotes(id) ON DELETE CASCADE
 );

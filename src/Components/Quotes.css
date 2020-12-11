@@ -38,9 +38,6 @@
   height: 50px;
 }
 
-.quote-box > button {
-}
-
 .edit-input {
   width: 80%;
   height: 50px;
@@ -49,21 +46,20 @@
 
 .func-button {
   background-color: #3CBD9F;
-  border: none;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* border-radius: 20%; */
+  border-style: solid;
+  border-color: white;
   height: 40px;
-  width: 80px;
+  width: 90px;
   margin: 15px;
-  bottom: 0;
+  /* bottom: 0; */
   right: 50%;
 }
 
+
 .edit-buttons {
   background-color: #3CBD9F;
-  border: none;
-  /* border-radius: 15%; */
+  border-style: solid;
+  border-color: white;
   height: 35px;
   width: 55px;
   margin: 15px;
@@ -88,4 +84,6 @@
   .quote-info {
     font-size: large;
   }
+
+ 
 }
