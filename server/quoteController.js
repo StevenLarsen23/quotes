@@ -44,7 +44,8 @@ module.exports = {
       const quote_id = quote[0].id
 
       db.favorites.add_favorite(user_id, quote_id)
-    .then(() => {res.sendStatus(200)})
+      const quotes = await db.quotes.all_quotes()
+    .then(() => {res.status(200).send(quotes)})
     } catch (err) {
       console.log("error adding quote", err);
       res.sendStatus(500);

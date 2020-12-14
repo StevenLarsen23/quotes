@@ -139,7 +139,7 @@ export default function reducer(state = initialState, action) {
     case ADD_FAVORITES + "_REJECTED":
       return { ...state };
     case ADD_FAVORITES + "_FULFILLED":
-      return { ...state, quotes: payload };
+      return { ...state, favoriteQuotes: payload };
     case DELETE_FAVORITES:
       return { ...state, ...payload };
     case SET_QUOTES:

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { addQuote, addFavorites } from "../redux/reducer";
+import { addQuote} from "../redux/reducer";
 import { Link, withRouter } from "react-router-dom";
 import './Form.css'
 
@@ -55,7 +55,7 @@ const Form = (props) => {
       <br />
       <button
       className='form-btn'
-        onClick={(e) => {
+        onClick={() => {
           props.addQuote(contentInput, authorInput, sourceInput, userId);
           sourceSetInput("");
           contentSetInput("");

@@ -45,7 +45,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        {this.props.location.pathname === "/form" ? null : (
+        {/* {this.props.location.pathname === "/form" ? null : ( */}
           <div className="nav">
             {this.props.location.pathname ===
             `/favorites/${this.props.user.id}` ? (
@@ -151,7 +151,7 @@ class Header extends Component {
               </div>
             )}
           </div>
-        )}
+        {/* )} */}
       </div>
     );
   }
