@@ -12,7 +12,7 @@ const AuthQuotes = (props) => {
   const userId = props.user.id;
 
   return (
-    <li className="quote-box" style={{ border: "2px solid black" }}>
+    <div className="quote-box" style={{ border: "2px solid black" }}>
       {userId === user_id ? (
         edit ? (
           <div>
@@ -125,7 +125,7 @@ const AuthQuotes = (props) => {
           </button>
         </div>
       )}
-    </li>
+    </div>
   );
 };
 

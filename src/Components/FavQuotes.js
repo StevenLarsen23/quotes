@@ -9,7 +9,7 @@ const FavQuotes = (props) => {
   const userId = props.userId;
 
   return userId !== user_id ? null : (
-    <li className="fav-quote-box" style={{ border: "2px solid black" }}>
+    <div className="fav-quote-box" style={{ border: "2px solid black" }}>
       <div>
         <div>
           <h2 className="fav-quote">"{content}"</h2>
@@ -33,7 +33,7 @@ const FavQuotes = (props) => {
           </button>
         </div>
       </div>
-    </li>
+    </div>
   );
 };
 

@@ -43,12 +43,11 @@ const Dashboard = (props) => {
     }
   };
 
-  // view only quotes
   let mappedQuotes = [];
   let authMappedQuotes = [];
   if (props.quotes) {
-    console.log(props.quotes)
     let data = props.quotes;
+    // view only quotes
     mappedQuotes = data.map((quote, i) => {
       return <DashQuotes key={`${quote.id}-${i}`} quote={quote} />;
     });
