@@ -1,19 +1,22 @@
 .form {
-  margin-top: 200px;
-  height: 100vh;
+  margin-top: 125px;
+  height: 75vh;
   /* border: 2px solid black; */
   padding: 20px;
 }
 
+
+
 .input-box {
-  height: 50px;
-  width: 1000px;
+  height: 150px;
+  width: 800px;
   margin: 20px;
-  font-size: x-large;
+  font-size: large;
 }
 
 .input-label {
   color: white;
+  /* margin-top: -50px; */
 }
 
 .form-btn {
@@ -26,16 +29,17 @@
 
 @media screen and (max-width: 850px) {
   .form {
-    height: 73vh;
-    padding-top: 200px;
+    height: 70vh;
+    padding-top: 25px;
     overflow: hidden;
   }
 
   .input-box {
     width: 80%;
-    height: 25px;
+    height: 75px;
     margin-left: 10px;
     margin-right: 10px;
+    font-size: medium;
   }
 
   .form-btn {

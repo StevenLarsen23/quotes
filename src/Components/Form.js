@@ -23,35 +23,35 @@ const Form = (props) => {
     className='form'
       onSubmit={(e) => e.preventDefault()}
     >
-      <label className='input-label'>
-        Quote:{" "}
-        <input
+      <p className='input-label'>
+        Quote:{" "}</p>
+        <textarea
         className='input-box'
           value={contentInput}
           type="text"
           onChange={(e) => contentSetInput(e.target.value)}
         />
-      </label>
+      
       <br />
-      <label className='input-label'>
-        Author:{" "}
-        <input
+      <p className='input-label'>
+        Author:{" "}</p>
+        <textarea
         className='input-box'
           value={authorInput}
           type="text"
           onChange={(e) => authorSetInput(e.target.value)}
         />
-      </label>
+      
       <br />
-      <label className='input-label'>
-        Source:{" "}
-        <input
+      <p className='input-label'>
+        Source:{" "}</p>
+        <textarea
         className='input-box'
           value={sourceInput}
           type="text"
           onChange={(e) => sourceSetInput(e.target.value)}
         />
-      </label>
+      
       <br />
       <button
       className='form-btn'

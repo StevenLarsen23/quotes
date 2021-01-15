@@ -18,6 +18,7 @@ const GET_FAVORITES = "GET_FAVORITES";
 const ADD_FAVORITES = "ADD_FAVORITES";
 const DELETE_FAVORITES = "DELETE_FAVORITES";
 const SEARCH_FAVORITES = "SEARCH_FAVORITES";
+const USER_QUOTES = 'USER_QUOTES'
 
 export function getQuotes() {
   const data = axios
@@ -28,6 +29,13 @@ export function getQuotes() {
     type: GET_QUOTES,
     payload: data,
   };
+}
+
+export function myQuotes(quotes) {
+  return {
+    type: USER_QUOTES,
+    payload: quotes,
+  }
 }
 
 export function getFavorites(quotes) {
@@ -128,6 +136,12 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case GET_FAVORITES + "_FULFILLED":
       return { ...state, favoriteQuotes: payload };
+    case USER_QUOTES + "_PENDING":
+      return { ...state };
+    case USER_QUOTES + "_REJECTED":
+      return { ...state };
+    case USER_QUOTES + "_FULFILLED":
+      return { ...state, quotes: payload };
     case ADD_QUOTE + "_PENDING":
       return { ...state };
     case ADD_QUOTE + "_REJECTED":

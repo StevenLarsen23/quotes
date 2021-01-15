@@ -31,6 +31,7 @@ class Header extends Component {
       })
       .catch((err) => console.log(err));
   };
+  
   logout = () => {
     axios.post("/auth/logout").then(() => {
       this.props.logoutUser();
@@ -48,7 +49,7 @@ class Header extends Component {
         {/* {this.props.location.pathname === "/form" ? null : ( */}
           <div className="nav">
             {this.props.location.pathname ===
-            `/favorites/${this.props.user.id}` ? (
+            `/favorites/${this.props.user.id}` || this.props.location.pathname === '/form' ? (
               <div className="search"></div>
             ) : (
               <div className="search">

@@ -74,9 +74,6 @@ module.exports = {
   //       source,
   //       user_id,
   //     ]);
-
-      
-
   //     res.status(200).send(quotes);
   //   } catch (err) {
   //     console.log("error adding quote", err);
@@ -101,6 +98,12 @@ module.exports = {
 
   myQuotes: (req, res) => {
     const db = req.app.get("db");
+    db.quotes.my_quotes()
+    .then(quotes => res.status(200).send(quotes))
+  },
+
+  myFavorites: (req, res) => {
+    const db = req.app.get("db");
     db.favorites.get_favorites()
     .then(quotes => res.status(200).send(quotes))
   },
@@ -108,9 +111,7 @@ module.exports = {
   editQuote: async (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    const { author } = req.body;
-    const { content } = req.body;
-    const { source } = req.body;
+    const { author, content, source } = req.body;
 
     try {
       const quotes = await db.quotes.edit_quote([+id, author, content, source]);
