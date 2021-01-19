@@ -19,13 +19,14 @@ const Dashboard = (props) => {
   }, []);
 
 
-  const editQuote = async (id, author, content, source, user_id) => {
+  const editQuote = async (id, author, content, source, user_id, is_private) => {
     try {
       const res = await axios.put(`/api/quotes/${id}`, {
         author,
         content,
         source,
         user_id,
+        is_private,
       });
       props.setQuotes(res.data);
       window.location.reload(false)

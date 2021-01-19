@@ -11,7 +11,8 @@ CREATE TABLE quotes (
     author VARCHAR(100),
     content VARCHAR(500),
     source VARCHAR(400),
-    user_id INT REFERENCES users(id)
+    user_id INT REFERENCES users(id),
+    is_private BOOLEAN,
 );
 
 CREATE TABLE favorites (

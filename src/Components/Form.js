@@ -10,6 +10,7 @@ const Form = (props) => {
     content: "",
     source: "",
     user_id: 0,
+    is_private: false,
   });
 
   const [contentInput, contentSetInput] = useState(quote.content);
@@ -51,7 +52,11 @@ const Form = (props) => {
           type="text"
           onChange={(e) => sourceSetInput(e.target.value)}
         />
+        <br/>
       
+      {/* <input type='checkbox' id='private' name='Private'></input>
+      <label for="private" className='checkbox'>Make quote private?</label> */}
+
       <br />
       <button
       className='form-btn'

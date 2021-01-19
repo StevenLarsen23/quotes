@@ -5,7 +5,9 @@
   padding: 20px;
 }
 
-
+.checkbox {
+  color: white;
+}
 
 .input-box {
   height: 150px;

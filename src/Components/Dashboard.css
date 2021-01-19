@@ -5,8 +5,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     z-index: 3;
-    /* justify-content: center;
-    align-items: center; */
 }
 
 .dash > ul {
