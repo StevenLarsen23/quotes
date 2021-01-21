@@ -3,7 +3,8 @@ let favorites = [];
 module.exports = {
   allQuotes: async (req, res) => {
     const db = req.app.get("db");
-    const quotes = await db.quotes.all_quotes();
+    const user = req.session.user
+    const quotes = await db.quotes.all_quotes(user ? user.id : null);
     res.status(200).send(quotes);
   },
 
@@ -62,26 +63,6 @@ module.exports = {
     .then((quotes) => {res.status(200).send(quotes)})
   
   },
-
-  // addQuote: async (req, res) => {
-  //   const db = req.app.get("db");
-  //   const { author, content, source } = req.body;
-  //   const user_id = req.session.user.id;
-  //   try {
-  //     const quotes = await db.quotes.add_quote([
-  //       author,
-  //       content,
-  //       source,
-  //       user_id,
-  //     ]);
-  //     res.status(200).send(quotes);
-  //   } catch (err) {
-  //     console.log("error adding quote", err);
-  //     res.sendStatus(500);
-  //   }
-  // },
-
-  
 
   deleteFavorite: async (req, res) => {
     const db = req.app.get("db");

@@ -36,27 +36,26 @@ const AuthQuotes = (props) => {
                 value={sourceInput}
                 onChange={(e) => sourceSetInput(e.target.value)}
               />
-              <p>Private?</p>
-              <ul>
-                <li>
+              <br/>
                   <input
                     type="radio"
+                    id='private'
                     name="isPrivate"
-                    value={isPrivateInput}
-                    checked={props.quotes[`${id}` - 1].is_private === true}
-                    onClick={(e) => isPrivateSetInput(props.quotes[`${id}` - 1].is_private === true)}
+                    value="true"
+                    checked={isPrivateInput === true}
+                    onChange={(e) => isPrivateSetInput(true)}
                   />
-                  Yes
+                  Private
+                  <br/>
                   <input
                     type="radio"
+                    id='public'
                     name="isPrivate"
-                    value={isPrivateInput}
-                    checked={props.quotes[`${id}` - 1].is_private === false}
-                    onClick={(e) => isPrivateSetInput(props.quotes[`${id}` - 1].is_private === false)}
+                    value='false'
+                    checked={isPrivateInput === false}
+                    onChange={(e) => isPrivateSetInput(false)}
                   />
-                  No
-                </li>
-              </ul>
+                  Public
             </div>
             <div>
               <button

@@ -1,6 +1,7 @@
 .quote-box {
   background-color: white;
   backdrop-filter: blur(8px);
+  border: 2px solid black;
   height: 400px;
   width: 40vw;
   font-size: large;
@@ -76,6 +77,7 @@
 @media (prefers-color-scheme: dark) {
   .quote-box {
     background-color: black;
+    border: 2px solid white;
   }
 
   .edit-button, .delete-button, .fav-button, .save-button {
