@@ -111,10 +111,10 @@ module.exports = {
   editQuote: async (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    const { author, content, source } = req.body;
+    const { author, content, source, is_private} = req.body;
 
     try {
-      const quotes = await db.quotes.edit_quote([+id, author, content, source]);
+      const quotes = await db.quotes.edit_quote([+id, author, content, source, is_private]);
       res.status(200).send(quotes);
     } catch (err) {
       console.log("Error when editing quote", err);

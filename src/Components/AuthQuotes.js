@@ -4,62 +4,83 @@ import { addFavorites } from "../redux/reducer";
 import "./Quotes.css";
 
 const AuthQuotes = (props) => {
-  const { id, content, author, source, user_id } = props.quote;
+  const { id, content, author, source, is_private, user_id } = props.quote;
   const [contentInput, contentSetInput] = useState(content);
   const [authorInput, authorSetInput] = useState(author);
   const [sourceInput, sourceSetInput] = useState(source);
+  const [isPrivateInput, isPrivateSetInput] = useState(is_private);
   const [edit, setEdit] = useState(false);
   const userId = props.user.id;
 
   return (
-    <div className="quote-box" style={{ border: "2px solid black" }}>
+    <div className="quote-box" >
       {userId === user_id ? (
         edit ? (
           <div>
-            <div>
-              <label>
-                Quote:
-                <input
-                  className="edit-input"
-                  value={contentInput}
-                  onChange={(e) => contentSetInput(e.target.value)}
-                />
-              </label>
-              <label>
-                Author:
-                <input
-                  className="edit-input"
-                  value={authorInput}
-                  onChange={(e) => authorSetInput(e.target.value)}
-                />
-              </label>
-              <label>
-                <br />
-                Source:
-                <input
-                  className="edit-input"
-                  value={sourceInput}
-                  onChange={(e) => sourceSetInput(e.target.value)}
-                />
-              </label>
+            <div className="edit-quote-box">
+              <p>Quote:</p>
+              <textarea
+                className="edit-input"
+                value={contentInput}
+                onChange={(e) => contentSetInput(e.target.value)}
+              />
+              <p>Author:</p>
+              <textarea
+                className="edit-input"
+                value={authorInput}
+                onChange={(e) => authorSetInput(e.target.value)}
+              />
+              <p>Source:</p>
+              <textarea
+                className="edit-input"
+                value={sourceInput}
+                onChange={(e) => sourceSetInput(e.target.value)}
+              />
+              <p>Private?</p>
+              <ul>
+                <li>
+                  <input
+                    type="radio"
+                    name="isPrivate"
+                    value={isPrivateInput}
+                    checked={props.quotes[`${id}` - 1].is_private === true}
+                    onClick={(e) => isPrivateSetInput(props.quotes[`${id}` - 1].is_private === true)}
+                  />
+                  Yes
+                  <input
+                    type="radio"
+                    name="isPrivate"
+                    value={isPrivateInput}
+                    checked={props.quotes[`${id}` - 1].is_private === false}
+                    onClick={(e) => isPrivateSetInput(props.quotes[`${id}` - 1].is_private === false)}
+                  />
+                  No
+                </li>
+              </ul>
             </div>
             <div>
               <button
-                className="edit-buttons"
+                className="save-button"
                 onClick={() => {
-                  props.editQuote(id, authorInput, contentInput, sourceInput);
+                  props.editQuote(
+                    id,
+                    authorInput,
+                    contentInput,
+                    sourceInput,
+                    isPrivateInput
+                  );
                   setEdit(!edit);
                 }}
               >
                 Save
               </button>
               <button
-                className="edit-buttons"
-                style={{ backgroundColor: "red" }}
+                className="cancel-button"
                 onClick={() => {
                   authorSetInput(author);
                   contentSetInput(content);
                   sourceSetInput(source);
+                  isPrivateSetInput(is_private);
                   setEdit(!edit);
                 }}
               >
@@ -84,7 +105,7 @@ const AuthQuotes = (props) => {
               <br />
               <br />
               <button
-                className="func-button"
+                className="edit-button"
                 onClick={() => {
                   setEdit(!edit);
                 }}
@@ -92,7 +113,7 @@ const AuthQuotes = (props) => {
                 Edit
               </button>
               <button
-                className="func-button"
+                className="delete-button"
                 onClick={() => {
                   props.deleteQuote(id);
                 }}
@@ -100,7 +121,7 @@ const AuthQuotes = (props) => {
                 Delete
               </button>
               <button
-                className="func-button"
+                className="fav-button"
                 onClick={() => props.addFavorites(id, userId)}
               >
                 + Favorites

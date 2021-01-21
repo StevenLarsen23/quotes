@@ -13,7 +13,17 @@ class Register extends Component {
       password: "",
       first_name: "",
       last_name: "",
+      type: "password",
     };
+    this.showHide = this.showHide.bind(this);
+  }
+
+  showHide(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({
+      type: this.state.type === "password" ? "input" : "password",
+    });
   }
 
   changeHandler = (e) => {
@@ -46,7 +56,6 @@ class Register extends Component {
         <div>
           <Link
             to="/"
-            style={{ textDecoration: "none", color: "white" }}
             className="home-btn"
           >
             Home
@@ -83,18 +92,26 @@ class Register extends Component {
             <div>
               <input
                 className="input"
+                id='password'
                 name="password"
-                type="password"
+                type={this.state.type}
                 value={password}
                 placeholder="password"
                 onChange={(e) => this.changeHandler(e)}
+              />
+              <span className="password__show" onClick={this.showHide}>
+                {this.state.type === "input" ? "Hide" : "Show"}
+              </span>
+              <span
+                className="password__strength"
+                data-score={this.state.score}
               />
             </div>
             <button className="btn">Register</button>
           </form>
           <div className="redirect">
             Have an Account? Click here to{" "}
-            <Link to="/auth" style={{ color: "white" }}>
+            <Link to="/auth" className="redirect">
               Login
             </Link>
           </div>

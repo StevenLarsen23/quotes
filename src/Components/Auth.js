@@ -12,7 +12,17 @@ class Auth extends Component {
       email: "",
       password: "",
       newUser: false,
+      type: "password",
     };
+    this.showHide = this.showHide.bind(this);
+  }
+
+  showHide(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({
+      type: this.state.type === "password" ? "input" : "password",
+    });
   }
 
   changeHandler = (e) => {
@@ -38,11 +48,7 @@ class Auth extends Component {
     return (
       <div className="auth">
         <div>
-          <Link
-            to="/"
-            style={{ textDecoration: "none"}}
-            className="home-btn"
-          >
+          <Link to="/" className="home-btn">
             Home
           </Link>
           <h3 className="name">Login</h3>
@@ -59,18 +65,22 @@ class Auth extends Component {
             <div>
               <input
                 className="input"
+                id="password"
                 name="password"
-                type="password"
+                type={this.state.type}
                 value={password}
                 placeholder="password"
                 onChange={(e) => this.changeHandler(e)}
               />
+              <span className="password__show" onClick={this.showHide}>
+                {this.state.type === "input" ? "Hide" : "Show"}
+              </span>
             </div>
             <button className="btn">Login</button>
           </form>
           <div className="redirect">
             Need an Account? Click here to{" "}
-            <Link to="/register" style={{ color: "white" }}>
+            <Link className='redirect' to="/register" >
               Register
             </Link>
           </div>

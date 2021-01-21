@@ -1,7 +1,6 @@
 .form {
   margin-top: 125px;
   height: 75vh;
-  /* border: 2px solid black; */
   padding: 20px;
 }
 
@@ -17,16 +16,22 @@
 }
 
 .input-label {
-  color: white;
-  /* margin-top: -50px; */
+  color: black;
 }
 
 .form-btn {
   border: none;
-  background-color: #319797;
+  background-color: #17343A;
+  color: white;
   padding: 5px;
   width: 5vw;
   margin: 5px;
+}
+
+@media (prefers-color-scheme: dark){
+  .input-label {
+    color: white;
+  }
 }
 
 @media screen and (max-width: 850px) {

@@ -2,20 +2,20 @@
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background-image: url(./background.jpg);
+  background-color: #3CBD9F;
+  /* background-image: url(background.jpg); */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow: scroll;
 }
 
-.App {
-  
-}
 
-@media (max-width: 850px) {
+
+@media (prefers-color-scheme: dark) {
   .full-app {
-    background-image: url(./mobile-background.jpg);
-    
+    background-color: #17343A;
+    color: white;
   }
+
 }

@@ -9,16 +9,17 @@
 .home-btn {
   right: 70px;
   margin-top: 20px;
+  text-decoration: none;
   position: fixed;
   font-size: x-large;
-  color: white;
+  color: black;
 }
 
 .name {
   margin-top: 20%;
   margin-bottom: 20px;
   font-size: x-large;
-  color: white;
+  /* color: white; */
 }
 
 .input {
@@ -27,18 +28,31 @@
   width: 25vw;
 }
 
+#password {
+  margin-left: 2.8vw;
+}
+
 .btn {
   border: none;
-  background-color: #319797;
+  background-color: #17343A;
   padding: 5px;
   width: 5vw;
   color: white;
 }
 
 .redirect {
-  margin: 20px;
-  color: white;
-  text-shadow: 1px 1px black;
+  margin-top: 20px;
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  .redirect {
+    color: white;
+  }
+
+  .home-btn {
+    color: white;
+  }
 }
 
 @media screen and (max-width: 850px) {

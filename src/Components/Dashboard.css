@@ -1,7 +1,7 @@
 .dash {
     height: auto;
     display: flex;
-    margin-top: 15vh;
+    margin-top: 7vh;
     flex-direction: column;
     flex-wrap: wrap;
     z-index: 3;
@@ -15,7 +15,7 @@
 @media screen and (max-width: 850px){
     .dash > ul{
     display: flex;
-    margin-top: 10vh;
+    margin-top: 2vh;
     }
  
  }

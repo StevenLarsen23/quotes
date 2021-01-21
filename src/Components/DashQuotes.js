@@ -4,7 +4,7 @@ const DashQuotes = (props) => {
   const { content, author, source } = props.quote;
 
   return (
-    <div className="quote-box" style={{ border: "2px solid black" }}>
+    <div className="quote-box">
       <div>
         <h2 className="quote">"{content}"</h2>
         <br />

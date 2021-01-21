@@ -54,6 +54,7 @@ class Header extends Component {
             <div className="search">
               <input
                 className="search-input"
+                placeholder='Search'
                 value={this.state.searchInput}
                 onChange={this.handleInput}
               />

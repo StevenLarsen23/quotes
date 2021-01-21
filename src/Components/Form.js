@@ -67,12 +67,12 @@ const Form = (props) => {
           authorSetInput("");
         }}
       >
-        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           Add
         </Link>
       </button>
       <button className='form-btn'>
-        <Link to='/' style={{textDecoration: "none", color: "black" }}>
+        <Link to='/' style={{textDecoration: "none", color: "white" }}>
         Cancel
         </Link>
       </button>

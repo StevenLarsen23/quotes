@@ -1,7 +1,6 @@
 .quote-box {
+  background-color: white;
   backdrop-filter: blur(8px);
-  color: white;
-  text-shadow: 2px 2px black;
   height: 400px;
   width: 40vw;
   font-size: large;
@@ -9,22 +8,7 @@
   display: inline-flex;
   flex-direction: row;
   font-family: Optima, sans-serif;
-  margin: 5px;
-  padding: 10px;
-}
-
-.fav-quote-box {
-  backdrop-filter: blur(8px);
-  color: beige;
-  text-shadow: 1px 1px black;
-  height: 400px;
-  width: 40vw;
-  font-size: large;
-  justify-content: center;
-  display: inline-flex;
-  flex-direction: row;
-  font-family: Optima, sans-serif;
-  margin: 5px;
+  margin: 2rem;
   padding: 10px;
 }
 
@@ -38,39 +22,73 @@
   height: 50px;
 }
 
+.edit-quote-box{
+  height: 325px;
+  width: 35vw;
+}
+
 .edit-input {
   width: 80%;
   height: 50px;
   margin: 10px;
 }
 
-.func-button {
-  background-color: #3CBD9F;
-  border-style: solid;
-  border-color: white;
+.edit-button, .delete-button, .fav-button, .save-button, .cancel-button, .-fav-button {
+  border: none;
   height: 40px;
   width: 90px;
-  margin: 15px;
-  /* bottom: 0; */
-  right: 50%;
+  position: absolute;
+  bottom: 2%;
+  margin: 10px;
 }
 
+.edit-button, .delete-button, .fav-button, .save-button, .-fav-button {
+  background-color: #17343A;
+  color: white;
+}
 
-.edit-buttons {
-  background-color: #3CBD9F;
-  border-style: solid;
-  border-color: white;
-  height: 35px;
-  width: 55px;
-  margin: 15px;
-  bottom: 0px;
-  right: 50%;
+.edit-button {
+  left: 5%;
+}
+
+.delete-button {
+  left: 42%;
+}
+
+.-fav-button {
+  left: 42%
+}
+
+.fav-button {
+  right: 5%;
+}
+
+.save-button {
+  left: 10%;
+}
+
+.cancel-button {
+  background-color: red;
+  right: 10%;
+}
+
+@media (prefers-color-scheme: dark) {
+  .quote-box {
+    background-color: black;
+  }
+
+  .edit-button, .delete-button, .fav-button, .save-button {
+    background-color: #3CBD9F;
+    color: black;
+  }
 }
 
 @media screen and (max-width: 800px) {
+  .edit-quote-box{
+    width: 90vw;
+  }
+  
   .quote-box {
-    /* color: #336178; */
-    /* text-shadow: 0.5px 0.5px black; */
     display: flex;
     align-items: center;
     width: 90%;
@@ -85,5 +103,16 @@
     font-size: large;
   }
 
+  .edit-button {
+    left: 2%;
+  }
+
+  .delete-button {
+    left: 35%;
+  }
+
+  .fav-button {
+    right: 2%
+  }
  
 }
