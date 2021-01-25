@@ -9,13 +9,15 @@ const Form = (props) => {
     author: "",
     content: "",
     source: "",
-    user_id: 0,
     is_private: false,
+    user_id: 0,
+
   });
 
   const [contentInput, contentSetInput] = useState(quote.content);
   const [authorInput, authorSetInput] = useState(quote.author);
   const [sourceInput, sourceSetInput] = useState(quote.source);
+  const isPrivate = useState(quote.is_private)
   const userId = props.user.id
   
   
@@ -61,7 +63,7 @@ const Form = (props) => {
       <button
       className='form-btn'
         onClick={() => {
-          props.addQuote(contentInput, authorInput, sourceInput, userId);
+          props.addQuote(contentInput, authorInput, sourceInput, isPrivate, userId);
           sourceSetInput("");
           contentSetInput("");
           authorSetInput("");
