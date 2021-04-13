@@ -9,7 +9,7 @@ const Form = (props) => {
     author: "",
     content: "",
     source: "",
-    is_private: false,
+    // is_private: false,
     user_id: 0,
 
   });

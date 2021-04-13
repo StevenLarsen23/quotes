@@ -12,7 +12,7 @@ CREATE TABLE quotes (
     content VARCHAR(500),
     source VARCHAR(400),
     user_id INT REFERENCES users(id),
-    is_private BOOLEAN,
+    is_private BOOLEAN DEFAULT true,
 );
 
 CREATE TABLE favorites (

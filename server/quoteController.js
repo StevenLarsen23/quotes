@@ -34,16 +34,16 @@ module.exports = {
 
   addQuote: async (req, res) => {
     const db = req.app.get("db");
-  const { author, content, source, /*is_private*/} = req.body;
-    const is_private = false;
+    const { author, content, source, /*is_private*/} = req.body;
+    const is_private = true;
     const user_id = req.session.user.id;
     try {
       const quote = await db.quotes.add_quote([
         author,
         content,
         source,
-        is_private,
         user_id,
+        is_private,
       ]);
     
       const quote_id = quote[0].id
