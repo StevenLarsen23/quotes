@@ -35,7 +35,7 @@ module.exports = {
   addQuote: async (req, res) => {
     const db = req.app.get("db");
     const { author, content, source, /*is_private*/} = req.body;
-    const is_private = true;
+    const is_private = false;
     const user_id = req.session.user.id;
     try {
       const quote = await db.quotes.add_quote([
@@ -56,6 +56,20 @@ module.exports = {
       res.sendStatus(500);
     }
   },
+
+  /* 
+  addTag: (req, res) => {
+    const db = req.app.get("db");
+    const {quote_id, tag_id} = req.body;
+    try {
+      const tag = await db.quote.add_tags([
+        quote_id
+      ])
+    }
+    db.quotes.add_tags(quote_id, tag_id)
+    .then((tags) => {res.status(200).send(tags)})
+  },
+  */
 
   addFavorites: (req, res) => {
     const db = req.app.get("db");

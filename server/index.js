@@ -43,13 +43,15 @@ app.post("/auth/logout", userCtrl.logout);
 app.get("/api/user", userCtrl.getUser);
 // app.put('/api/user/:id', userCtrl.editUser);
 
-// quotes endpoints
+// quotes/tags endpoints
 app.get("/api/quotes", qCtrl.allQuotes);
 app.get("/api/quotes/:id", qCtrl.oneQuote);
 app.get("/api/search", qCtrl.searchQuotes);
 app.post("/api/quotes", qCtrl.addQuote);
 app.put("/api/quotes/:id", qCtrl.editQuote);
 app.delete("/api/quotes/:id", qCtrl.deleteQuote);
+//app.post("/api/tags", qCtrl.addTag);
+
 
 // user's quotes endpoints
 app.get("/api/quotes/:id", qCtrl.myQuotes)
